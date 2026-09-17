@@ -1,0 +1,6 @@
+{
+  "name": "PHP & C Data Structures Lab Workbench",
+  "description": "Interactive code runner, simulator, and error-free solution bank for PHP Web Scripting & C Data Structures practical assignments (SET A, SET B, SET C).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
