@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Play, RotateCcw, BarChart2, Cpu, ArrowRight } from 'lucide-react';
 import { Problem } from '../types';
 
 interface CDsSimulatorProps {
   problem: Problem;
-  showMarathi: boolean;
 }
 
-export const CDsSimulator: React.FC<CDsSimulatorProps> = ({ problem, showMarathi }) => {
+export const CDsSimulator: React.FC<CDsSimulatorProps> = ({ problem }) => {
   // Common states
   const [arrayInput, setArrayInput] = useState<string>('25, 12, 45, 8, 30');
   const [searchValue, setSearchValue] = useState<string>('12');
@@ -19,6 +18,15 @@ export const CDsSimulator: React.FC<CDsSimulatorProps> = ({ problem, showMarathi
 
   // Simulation execution results
   const [simulationResult, setSimulationResult] = useState<any>(null);
+
+  useEffect(() => {
+    setArrayInput('25, 12, 45, 8, 30');
+    setSearchValue('12');
+    setReplaceVal('99');
+    setPoly1Input('6x^4 + 2x^2 + 5x^1 + 3');
+    setPoly2Input('3x^4 + 4x^2 + 1x^1 + 7');
+    setSimulationResult(null);
+  }, [problem.id]);
 
   const handleRunSimulation = () => {
     switch (problem.id) {
@@ -308,7 +316,7 @@ export const CDsSimulator: React.FC<CDsSimulatorProps> = ({ problem, showMarathi
         <div className="flex items-center gap-2">
           <Cpu className="w-4 h-4 text-purple-400" />
           <span className="font-semibold text-xs text-slate-200">
-            {showMarathi ? 'C डेटा स्ट्रक्चर्स लाईव्ह सिम्युलेटर' : 'C Data Structures Interactive Simulator'}
+            C Data Structures Interactive Simulator
           </span>
         </div>
         <button
@@ -373,7 +381,7 @@ export const CDsSimulator: React.FC<CDsSimulatorProps> = ({ problem, showMarathi
           className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs transition shadow-lg shadow-purple-600/20"
         >
           <Play className="w-4 h-4 fill-current" />
-          <span>{showMarathi ? 'C सिम्युलेशन चालवा (Run C Algorithm)' : 'Run C Memory & Algorithm Simulation'}</span>
+          <span>Run C Memory & Algorithm Simulation</span>
         </button>
 
         {/* Simulation Output Area */}

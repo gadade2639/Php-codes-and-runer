@@ -5,6 +5,8 @@ export interface Problem {
   id: string;
   title: string;
   marathiTitle: string;
+  questionStatement?: string;
+  marathiQuestionStatement?: string;
   subject: SubjectType;
   set: SetType;
   description: string;

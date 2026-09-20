@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Play, RotateCcw, Monitor, Code } from 'lucide-react';
 import { Problem } from '../types';
 
 interface PhpSimulatorProps {
   problem: Problem;
-  showMarathi: boolean;
 }
 
-export const PhpSimulator: React.FC<PhpSimulatorProps> = ({ problem, showMarathi }) => {
+export const PhpSimulator: React.FC<PhpSimulatorProps> = ({ problem }) => {
   const initialFormValues = () => {
     const vals: Record<string, any> = {};
     problem.inputFields?.forEach((field) => {
@@ -18,6 +17,11 @@ export const PhpSimulator: React.FC<PhpSimulatorProps> = ({ problem, showMarathi
 
   const [formState, setFormState] = useState<Record<string, any>>(initialFormValues());
   const [outputHtml, setOutputHtml] = useState<string | null>(null);
+
+  useEffect(() => {
+    setFormState(initialFormValues());
+    setOutputHtml(null);
+  }, [problem.id]);
 
   const handleInputChange = (name: string, value: any) => {
     setFormState((prev) => ({ ...prev, [name]: value }));
@@ -529,7 +533,7 @@ export const PhpSimulator: React.FC<PhpSimulatorProps> = ({ problem, showMarathi
         <div className="flex items-center gap-2">
           <Monitor className="w-4 h-4 text-emerald-400" />
           <span className="font-semibold text-xs text-slate-200">
-            {showMarathi ? 'ब्राऊझर इन-मेमरी PHP फॉर्म सिम्युलेटर' : 'Live Interactive PHP Form Simulator'}
+            Live Interactive PHP Form Simulator
           </span>
         </div>
         <button
@@ -553,7 +557,7 @@ export const PhpSimulator: React.FC<PhpSimulatorProps> = ({ problem, showMarathi
 
                   {field.type === 'select' ? (
                     <select
-                      value={formState[field.name]}
+                      value={formState[field.name] ?? field.defaultValue ?? ''}
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
                       className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
                     >
@@ -565,7 +569,7 @@ export const PhpSimulator: React.FC<PhpSimulatorProps> = ({ problem, showMarathi
                     </select>
                   ) : field.type === 'textarea' ? (
                     <textarea
-                      value={formState[field.name]}
+                      value={formState[field.name] ?? field.defaultValue ?? ''}
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
                       className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500 h-16"
                     />
@@ -575,7 +579,7 @@ export const PhpSimulator: React.FC<PhpSimulatorProps> = ({ problem, showMarathi
                       step={field.step}
                       min={field.min}
                       max={field.max}
-                      value={formState[field.name]}
+                      value={formState[field.name] ?? field.defaultValue ?? ''}
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
                       required={field.required}
                       className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
@@ -590,22 +594,20 @@ export const PhpSimulator: React.FC<PhpSimulatorProps> = ({ problem, showMarathi
               className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition shadow-lg shadow-emerald-600/20"
             >
               <Play className="w-4 h-4 fill-current" />
-              <span>{showMarathi ? 'PHP कोड रन करा (Submit)' : 'Run PHP Form Script'}</span>
+              <span>Run PHP Form Script</span>
             </button>
           </form>
         ) : (
           <div className="space-y-3">
             <p className="text-xs text-slate-400">
-              {showMarathi
-                ? 'ह्या प्रोग्रामला इनपुट फॉर्म आवश्यक नाही. खालील बटण दाबून आऊटपुट पहा.'
-                : 'This PHP script executes automatically without requiring form input.'}
+              This PHP script executes automatically without requiring form input.
             </p>
             <button
               onClick={handleSimulate}
               className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition shadow-lg shadow-emerald-600/20"
             >
               <Play className="w-4 h-4 fill-current" />
-              <span>{showMarathi ? 'आऊटपुट पहा (Execute)' : 'Execute Script & View Output'}</span>
+              <span>Execute Script & View Output</span>
             </button>
           </div>
         )}
@@ -616,7 +618,7 @@ export const PhpSimulator: React.FC<PhpSimulatorProps> = ({ problem, showMarathi
             <div className="flex items-center gap-2 mb-2">
               <Code className="w-3.5 h-3.5 text-indigo-400" />
               <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
-                {showMarathi ? 'ब्राऊझर आऊटपुट (Rendered Result)' : 'Simulated PHP HTML Output'}
+                Simulated PHP HTML Output
               </span>
             </div>
 

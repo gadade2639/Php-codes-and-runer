@@ -1,11 +1,7 @@
 import React from 'react';
 import { AlertTriangle, CheckCircle2, Folder, HelpCircle, Server, Terminal, ShieldAlert, Sparkles, Cpu } from 'lucide-react';
 
-interface XamppGuideProps {
-  showMarathi: boolean;
-}
-
-export const XamppGuide: React.FC<XamppGuideProps> = ({ showMarathi }) => {
+export const XamppGuide: React.FC = () => {
   return (
     <div className="max-w-5xl mx-auto space-y-6 text-slate-200">
       {/* Banner */}
@@ -16,14 +12,10 @@ export const XamppGuide: React.FC<XamppGuideProps> = ({ showMarathi }) => {
           </div>
           <div>
             <h2 className="text-xl font-bold text-amber-300">
-              {showMarathi 
-                ? 'PHP आउटपुट का दिसत नाही? (Run hot nahi / Output show nhi hot error fix)' 
-                : 'Why PHP Output is Not Showing on Double-Click? (Troubleshooting Guide)'}
+              Why PHP Output is Not Showing on Double-Click? (Troubleshooting Guide)
             </h2>
             <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-              {showMarathi
-                ? 'PHP फाइलवर डायरेक्ट डबल-क्लिक केल्यास ब्राऊझरमध्ये फक्त कोड दिसतो किंवा आउटपुट येत नाही. PHP कोड चालवण्यासाठी local server (XAMPP / WAMP) आवश्यक असतो.'
-                : 'PHP is a server-side language. Double-clicking a .php file opens it as a static file (file:///) instead of processing PHP code. You MUST run it through Apache web server via http://localhost.'}
+              PHP is a server-side language. Double-clicking a .php file opens it as a static file (file:///) instead of processing PHP code. You MUST run it through Apache web server via http://localhost.
             </p>
           </div>
         </div>
@@ -38,13 +30,11 @@ export const XamppGuide: React.FC<XamppGuideProps> = ({ showMarathi }) => {
               1
             </span>
             <h3 className="font-bold text-sm text-indigo-300">
-              {showMarathi ? 'XAMPP इंस्टॉल व स्टार्ट करा' : 'Install & Start XAMPP Server'}
+              Install & Start XAMPP Server
             </h3>
           </div>
           <p className="text-xs text-slate-400 leading-relaxed mb-3">
-            {showMarathi
-              ? 'XAMPP Control Panel उघडा आणि "Apache" च्या समोरील "Start" बटणावर क्लिक करा.'
-              : 'Open XAMPP Control Panel and click "Start" next to Apache service.'}
+            Open XAMPP Control Panel and click "Start" next to Apache service.
           </p>
           <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs font-mono text-emerald-400 flex items-center gap-2">
             <Server className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -59,13 +49,11 @@ export const XamppGuide: React.FC<XamppGuideProps> = ({ showMarathi }) => {
               2
             </span>
             <h3 className="font-bold text-sm text-purple-300">
-              {showMarathi ? 'फाइल htdocs फोल्डरमध्ये ठेवा' : 'Copy File into `htdocs` Folder'}
+              Copy File into `htdocs` Folder
             </h3>
           </div>
           <p className="text-xs text-slate-400 leading-relaxed mb-3">
-            {showMarathi
-              ? 'तुमची .php फाईल नक्की C:\\xampp\\htdocs\\ या फोल्डरमध्येच सेव्ह करा.'
-              : 'Save your .php files inside C:\\xampp\\htdocs\\myfolder\\'}
+            Save your .php files inside C:\xampp\htdocs\myfolder\
           </p>
           <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs font-mono text-slate-300 flex items-center gap-2">
             <Folder className="w-4 h-4 text-amber-400 shrink-0" />
@@ -80,13 +68,11 @@ export const XamppGuide: React.FC<XamppGuideProps> = ({ showMarathi }) => {
               3
             </span>
             <h3 className="font-bold text-sm text-emerald-300">
-              {showMarathi ? 'ब्राऊझरमध्ये localhost नाव टाका' : 'Access via http://localhost URL'}
+              Access via http://localhost URL
             </h3>
           </div>
           <p className="text-xs text-slate-400 leading-relaxed mb-3">
-            {showMarathi
-              ? 'ब्राऊझर उघडा आणि अॅड्रेस बारमध्ये हे URL टाईप करा (डबल क्लिक करू नका!):'
-              : 'Open Chrome or Firefox and type this URL (Do NOT double-click file!):'}
+            Open Chrome or Firefox and type this URL (Do NOT double-click file!):
           </p>
           <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs font-mono text-indigo-300 flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -101,13 +87,11 @@ export const XamppGuide: React.FC<XamppGuideProps> = ({ showMarathi }) => {
               4
             </span>
             <h3 className="font-bold text-sm text-amber-300">
-              {showMarathi ? 'फॉर्म सबमिट झाल्यावर एरर घालवणे' : 'Form Submission & isset() Check'}
+              Form Submission & isset() Check
             </h3>
           </div>
           <p className="text-xs text-slate-400 leading-relaxed mb-3">
-            {showMarathi
-              ? 'फॉर्म भरण्याआधी "Undefined index" चा एरर येऊ नये म्हणून `isset($_POST[\'submit\'])` चे चेकिंग सर्व कोडमध्ये वापरले आहे.'
-              : 'Our codes wrap PHP calculations inside `if (isset($_POST[\'submit\']))` to prevent "Undefined array key" warnings on page load.'}
+            Our codes wrap PHP calculations inside `if (isset($_POST['submit']))` to prevent "Undefined array key" warnings on page load.
           </p>
           <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs font-mono text-amber-300 flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
@@ -120,9 +104,7 @@ export const XamppGuide: React.FC<XamppGuideProps> = ({ showMarathi }) => {
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
         <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
           <ShieldAlert className="w-5 h-5 text-rose-400" />
-          <span>
-            {showMarathi ? 'कॉमन एरर आणि त्यांचे उपाय (Common Mistakes & Solutions)' : 'Common PHP Errors & Solutions'}
-          </span>
+          <span>Common PHP Errors & Solutions</span>
         </h3>
 
         <div className="space-y-3">
@@ -131,8 +113,8 @@ export const XamppGuide: React.FC<XamppGuideProps> = ({ showMarathi }) => {
               ❌ Problem: Warning: Undefined array key "num1" / Undefined index "submit"
             </p>
             <p className="text-xs text-slate-300 leading-relaxed">
-              <strong>कारण:</strong> पेज लोड होताच PHP लगेच `$_POST['num1']` शोधायचा प्रयत्न करतो. जर युजरने फॉर्म सबमिट केला नसेल, तर हे व्हॅल्यू अस्तित्वात नसते.<br/>
-              <strong>उपाय:</strong> फॉर्म इनपुट घेण्यापूर्वी `if ($_SERVER["REQUEST_METHOD"] == "POST")` किंवा `if (isset($_POST['submit']))` वापरणे mandatory आहे.
+              <strong>Cause:</strong> PHP tries to read `$_POST['num1']` immediately on page load before the user clicks submit.<br/>
+              <strong>Solution:</strong> Always wrap form processing inside `if ($_SERVER["REQUEST_METHOD"] == "POST")` or `if (isset($_POST['submit']))`.
             </p>
           </div>
 
@@ -141,7 +123,7 @@ export const XamppGuide: React.FC<XamppGuideProps> = ({ showMarathi }) => {
               ❌ Problem: Form action does not redirect or reloads blank page
             </p>
             <p className="text-xs text-slate-300 leading-relaxed">
-              <strong>उपाय:</strong> फॉर्म त्याच फाइलवर सबमिट करण्यासाठी `action=""` ठेवा. जर PHP आणि HTML एकाच फाइलमध्ये असतील तर हा सर्वात सोपा आणि एरर-फ्री मार्ग आहे.
+              <strong>Solution:</strong> Keep `action=""` to submit the form to the same file. Combining HTML and PHP in a single file is the cleanest and most reliable method.
             </p>
           </div>
         </div>
@@ -151,9 +133,7 @@ export const XamppGuide: React.FC<XamppGuideProps> = ({ showMarathi }) => {
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
         <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
           <Cpu className="w-5 h-5 text-purple-400" />
-          <span>
-            {showMarathi ? 'C डेटा स्ट्रक्चर्स कोड कसे रन करावेत? (How to Run C Code)' : 'How to Compile and Run C Programs'}
-          </span>
+          <span>How to Compile and Run C Programs</span>
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-300">

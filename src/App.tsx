@@ -10,12 +10,23 @@ import { SubjectType, SetType, Problem } from './types';
 import { Code2, Play, LayoutGrid, CheckCircle2, BookOpen, Layers, Terminal, Sparkles } from 'lucide-react';
 
 export function App() {
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    const saved = localStorage.getItem('app_theme');
+    return saved ? saved === 'dark' : true;
+  });
+
+  const toggleTheme = () => {
+    setDarkMode((prev) => {
+      const next = !prev;
+      localStorage.setItem('app_theme', next ? 'dark' : 'light');
+      return next;
+    });
+  };
 
   const [activeTab, setActiveTab] = useState<'problems' | 'xampp_guide'>('problems');
   const [activeSubject, setActiveSubject] = useState<SubjectType>('php');
   const [selectedSet, setSelectedSet] = useState<SetType | 'ALL'>('ALL');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [showMarathi, setShowMarathi] = useState<boolean>(true);
   const [viewMode, setViewMode] = useState<'both' | 'code' | 'simulator'>('both');
 
   // Selected Problem ID
@@ -53,7 +64,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white flex flex-col">
+    <div className={`min-h-screen ${darkMode ? 'bg-slate-950 text-slate-100' : 'bg-slate-100 text-slate-900'} font-sans transition-colors duration-200 selection:bg-indigo-500 selection:text-white flex flex-col`}>
       {/* Header Bar */}
       <Header
         activeTab={activeTab}
@@ -64,35 +75,35 @@ export function App() {
         setSelectedSet={setSelectedSet}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        showMarathi={showMarathi}
-        setShowMarathi={setShowMarathi}
         totalPhpCount={phpProblems.length}
         totalCCount={cDataStructuresProblems.length}
+        darkMode={darkMode}
+        toggleTheme={toggleTheme}
       />
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {activeTab === 'xampp_guide' ? (
-          <XamppGuide showMarathi={showMarathi} />
+          <XamppGuide />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Left Sidebar: Problem List Navigation */}
             <aside className="lg:col-span-4 space-y-3">
-              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-800/80 mb-3">
+              <div className={`${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200 shadow-sm'} border rounded-2xl p-4 transition-colors`}>
+                <div className={`flex items-center justify-between pb-3 border-b ${darkMode ? 'border-slate-800/80' : 'border-slate-200'} mb-3`}>
                   <div className="flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-indigo-400" />
-                    <span className="font-bold text-xs uppercase tracking-wider text-slate-300">
+                    <Layers className="w-4 h-4 text-indigo-500" />
+                    <span className={`font-bold text-xs uppercase tracking-wider ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                       {activeSubject === 'php' ? 'PHP Practical Index' : 'C Data Structures Index'}
                     </span>
                   </div>
-                  <span className="bg-slate-800 text-slate-400 text-[11px] font-mono px-2 py-0.5 rounded-full">
+                  <span className={`${darkMode ? 'bg-slate-800 text-slate-400' : 'bg-slate-100 text-slate-600'} text-[11px] font-mono px-2 py-0.5 rounded-full`}>
                     {currentProblems.length} items
                   </span>
                 </div>
 
                 {/* Problem items list */}
-                <div className="space-y-1.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-800">
+                <div className="space-y-1.5 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-400">
                   {currentProblems.length === 0 ? (
                     <div className="p-6 text-center text-slate-500 text-xs">
                       No matching practicals found. Try resetting search or set filter.
@@ -104,43 +115,56 @@ export function App() {
                         <button
                           key={prob.id}
                           onClick={() => setSelectedProblemId(prob.id)}
-                          className={`w-full text-left p-3 rounded-xl border transition flex items-start justify-between gap-2 group ${
+                          className={`w-full text-left p-3.5 rounded-xl border transition flex flex-col gap-2 group ${
                             isSelected
                               ? activeSubject === 'php'
-                                ? 'bg-indigo-600/15 border-indigo-500/50 text-indigo-200 shadow-md'
-                                : 'bg-purple-600/15 border-purple-500/50 text-purple-200 shadow-md'
-                              : 'bg-slate-950/60 hover:bg-slate-800/60 border-slate-800/80 text-slate-300'
+                                ? darkMode
+                                  ? 'bg-indigo-600/20 border-indigo-500/60 text-indigo-100 shadow-lg shadow-indigo-950/50 ring-1 ring-indigo-500/30'
+                                  : 'bg-indigo-50 border-indigo-400 text-indigo-950 shadow-sm ring-1 ring-indigo-300'
+                                : darkMode
+                                ? 'bg-purple-600/20 border-purple-500/60 text-purple-100 shadow-lg shadow-purple-950/50 ring-1 ring-purple-500/30'
+                                : 'bg-purple-50 border-purple-400 text-purple-950 shadow-sm ring-1 ring-purple-300'
+                              : darkMode
+                              ? 'bg-slate-950/70 hover:bg-slate-800/60 border-slate-800/80 text-slate-300'
+                              : 'bg-slate-50/80 hover:bg-slate-100 border-slate-200 text-slate-700'
                           }`}
                         >
-                          <div className="space-y-1 min-w-0 flex-1">
+                          <div className="flex items-center justify-between w-full gap-2">
                             <div className="flex items-center gap-2">
                               <span
-                                className={`text-[10px] font-bold px-1.5 py-0.2 rounded border uppercase tracking-wider ${
+                                className={`text-[10px] font-bold px-1.5 py-0.5 rounded border uppercase tracking-wider ${
                                   prob.set === 'SET A'
-                                    ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                                    ? 'bg-emerald-500/15 text-emerald-600 border-emerald-500/30'
                                     : prob.set === 'SET B'
-                                    ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20'
-                                    : 'bg-purple-500/10 text-purple-400 border-purple-500/20'
+                                    ? 'bg-indigo-500/15 text-indigo-600 border-indigo-500/30'
+                                    : 'bg-purple-500/15 text-purple-600 border-purple-500/30'
                                 }`}
                               >
                                 {prob.set}
                               </span>
-                              <span className="font-mono text-[11px] text-slate-400 truncate">
+                              <span className={`font-mono text-[11px] ${darkMode ? 'text-slate-400' : 'text-slate-500'} truncate`}>
                                 {prob.filename}
                               </span>
                             </div>
-                            <h4 className="font-medium text-xs text-slate-200 truncate leading-snug group-hover:text-white">
-                              {prob.title}
-                            </h4>
-                            {showMarathi && (
-                              <p className="text-[11px] text-slate-400 truncate">
-                                {prob.marathiTitle}
-                              </p>
+                            {isSelected && (
+                              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
                             )}
                           </div>
 
-                          {isSelected && (
-                            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                          <div>
+                            <h4 className={`font-bold text-xs leading-snug ${darkMode ? 'text-slate-100 group-hover:text-white' : 'text-slate-800 group-hover:text-slate-950'}`}>
+                              {prob.title}
+                            </h4>
+                          </div>
+
+                          {/* Full Question snippet on Card */}
+                          {prob.questionStatement && (
+                            <div className={`w-full border rounded-lg p-2 mt-0.5 space-y-1 ${darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-slate-200'}`}>
+                              <p className={`text-[11px] font-mono line-clamp-3 leading-relaxed ${darkMode ? 'text-indigo-200' : 'text-slate-700'}`}>
+                                <strong className="text-emerald-600 font-sans">Q. </strong>
+                                {prob.questionStatement.replace(/^Q\.\s*/, '')}
+                              </p>
+                            </div>
                           )}
                         </button>
                       );
@@ -155,36 +179,32 @@ export function App() {
               {activeProblem ? (
                 <>
                   {/* Problem Title Box */}
-                  <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+                  <div className={`${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200 shadow-sm'} border rounded-2xl p-5 relative overflow-hidden transition-colors`}>
+                    <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
                       <div>
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-bold px-2.5 py-0.5 rounded-md">
+                          <span className={`text-xs font-bold px-2.5 py-0.5 rounded-md border ${darkMode ? 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30' : 'bg-indigo-50 text-indigo-700 border-indigo-200'}`}>
                             {activeProblem.set}
                           </span>
-                          <span className="bg-slate-800 text-slate-400 text-xs font-mono px-2 py-0.5 rounded">
+                          <span className={`text-xs font-mono px-2 py-0.5 rounded ${darkMode ? 'bg-slate-800 text-slate-400' : 'bg-slate-100 text-slate-600'}`}>
                             {activeProblem.filename}
                           </span>
                         </div>
-                        <h2 className="text-lg font-bold text-white">
+                        <h2 className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                           {activeProblem.title}
                         </h2>
-                        {showMarathi && (
-                          <h3 className="text-xs font-medium text-indigo-300 mt-0.5 flex items-center gap-1.5">
-                            <BookOpen className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
-                            <span>{activeProblem.marathiTitle}</span>
-                          </h3>
-                        )}
                       </div>
 
                       {/* View Mode Toggle Switch */}
-                      <div className="flex items-center bg-slate-950 p-1 rounded-lg border border-slate-800 self-start sm:self-auto text-xs">
+                      <div className={`flex items-center p-1 rounded-lg border text-xs self-start sm:self-auto ${darkMode ? 'bg-slate-950 border-slate-800' : 'bg-slate-100 border-slate-300'}`}>
                         <button
                           onClick={() => setViewMode('both')}
                           className={`flex items-center gap-1 px-2.5 py-1 rounded-md font-semibold transition ${
                             viewMode === 'both'
                               ? 'bg-indigo-600 text-white shadow-sm'
-                              : 'text-slate-400 hover:text-slate-200'
+                              : darkMode
+                              ? 'text-slate-400 hover:text-slate-200'
+                              : 'text-slate-600 hover:text-slate-900'
                           }`}
                         >
                           <LayoutGrid className="w-3.5 h-3.5" />
@@ -195,7 +215,9 @@ export function App() {
                           className={`flex items-center gap-1 px-2.5 py-1 rounded-md font-semibold transition ${
                             viewMode === 'code'
                               ? 'bg-indigo-600 text-white shadow-sm'
-                              : 'text-slate-400 hover:text-slate-200'
+                              : darkMode
+                              ? 'text-slate-400 hover:text-slate-200'
+                              : 'text-slate-600 hover:text-slate-900'
                           }`}
                         >
                           <Code2 className="w-3.5 h-3.5" />
@@ -206,7 +228,9 @@ export function App() {
                           className={`flex items-center gap-1 px-2.5 py-1 rounded-md font-semibold transition ${
                             viewMode === 'simulator'
                               ? 'bg-indigo-600 text-white shadow-sm'
-                              : 'text-slate-400 hover:text-slate-200'
+                              : darkMode
+                              ? 'text-slate-400 hover:text-slate-200'
+                              : 'text-slate-600 hover:text-slate-900'
                           }`}
                         >
                           <Play className="w-3.5 h-3.5" />
@@ -215,9 +239,24 @@ export function App() {
                       </div>
                     </div>
 
-                    <p className="text-xs text-slate-300 mt-3 leading-relaxed">
+                    <p className={`text-xs mt-3 leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
                       {activeProblem.description}
                     </p>
+
+                    {/* Full Question Statement Card */}
+                    {activeProblem.questionStatement && (
+                      <div className={`mt-4 p-3.5 border rounded-xl space-y-1.5 ${darkMode ? 'bg-slate-950/80 border-indigo-500/30 shadow-inner' : 'bg-slate-50 border-indigo-200'}`}>
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                          <span className={`text-[11px] font-bold uppercase tracking-wider ${darkMode ? 'text-indigo-300' : 'text-indigo-800'}`}>
+                            Full Practical Question Statement:
+                          </span>
+                        </div>
+                        <p className={`text-xs font-mono font-semibold leading-relaxed pl-4 border-l-2 ${darkMode ? 'text-slate-100 border-indigo-500/80' : 'text-slate-800 border-indigo-500'}`}>
+                          {activeProblem.questionStatement}
+                        </p>
+                      </div>
+                    )}
                   </div>
 
                   {/* Main Grid for Code and/or Simulator */}
@@ -228,23 +267,23 @@ export function App() {
                   >
                     {/* Code Snippet Box */}
                     {(viewMode === 'both' || viewMode === 'code') && (
-                      <CodeViewer problem={activeProblem} showMarathi={showMarathi} />
+                      <CodeViewer problem={activeProblem} />
                     )}
 
                     {/* Simulator Box */}
                     {(viewMode === 'both' || viewMode === 'simulator') && (
                       <div>
                         {activeProblem.subject === 'php' ? (
-                          <PhpSimulator problem={activeProblem} showMarathi={showMarathi} />
+                          <PhpSimulator key={activeProblem.id} problem={activeProblem} />
                         ) : (
-                          <CDsSimulator problem={activeProblem} showMarathi={showMarathi} />
+                          <CDsSimulator key={activeProblem.id} problem={activeProblem} />
                         )}
                       </div>
                     )}
                   </div>
                 </>
               ) : (
-                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center text-slate-400 text-xs">
+                <div className={`${darkMode ? 'bg-slate-900 border-slate-800 text-slate-400' : 'bg-white border-slate-200 text-slate-600'} border rounded-2xl p-12 text-center text-xs`}>
                   Select an assignment from the left index to view source code & test live execution.
                 </div>
               )}
@@ -254,15 +293,15 @@ export function App() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-900 border-t border-slate-800 py-4 mt-8 text-center text-xs text-slate-500">
+      <footer className={`${darkMode ? 'bg-slate-900 border-slate-800 text-slate-500' : 'bg-white border-slate-200 text-slate-600'} border-t py-4 mt-8 text-center text-xs transition-colors`}>
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <Terminal className="w-4 h-4 text-indigo-400" />
+            <Terminal className="w-4 h-4 text-indigo-500" />
             <span>PHP & C Data Structures Workbench — 100% Verified Practical Solutions</span>
           </div>
-          <p className="text-slate-400 flex items-center gap-1">
-            <span>Built with React & Tailwind</span>
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+          <p className={`${darkMode ? 'text-slate-300' : 'text-slate-700'} font-medium flex items-center gap-1.5`}>
+            <span>Developed by <strong className="text-indigo-500">Tejas Gadade</strong></span>
+            <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-500/20" />
           </p>
         </div>
       </footer>

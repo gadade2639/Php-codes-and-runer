@@ -6,6 +6,8 @@ export const phpProblems: Problem[] = [
     id: 'php-seta-1',
     title: 'Quotient and Remainder Calculator',
     marathiTitle: 'भागाकार (Quotient) आणि बाकी (Remainder) काढणे',
+    questionStatement: 'Q. Write a PHP script to declare two integer variables (Dividend and Divisor), find their Quotient and Remainder using intdiv() and % modulo operators, and display the output safely.',
+    marathiQuestionStatement: 'प्रश्न: दोन पूर्णांक संख्या (भाज्य आणि भाजक) स्वीकारून intdiv() आणि % ऑपरेटरच्या मदतीने त्यांचा भागाकार (Quotient) आणि बाकी (Remainder) शोधण्यासाठी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET A',
     description: 'Accept Dividend and Divisor from user via HTML form and calculate Quotient and Remainder safely checking division by zero.',
@@ -44,13 +46,13 @@ export const phpProblems: Problem[] = [
 </body>
 </html>`,
     explanation: {
-      en: 'Uses `intdiv()` for integer quotient calculation and `%` modulo operator for remainder. Form uses POST method with error check for zero divisor.',
-      mr: '`intdiv()` द्वारे पूर्णांक भागाकार आणि `%` द्वारे बाकी (Remainder) काढली जाते. 0 ने भाग दिल्यास एरर दाखवला जातो.'
+      en: 'Uses intdiv() for integer quotient calculation and % modulo operator for remainder. Form uses POST method with error check for zero divisor.',
+      mr: 'intdiv() द्वारे पूर्णांक भागाकार आणि % द्वारे बाकी (Remainder) काढली जाते. 0 ने भाग दिल्यास एरर दाखवला जातो.'
     },
     keyTakeaways: [
       'Always check if divisor is 0 before dividing.',
-      'Use `isset($_POST["submit"])` to trigger PHP block only when form is submitted.',
-      'Set `action=""` to stay on the same page.'
+      'Use isset($_POST["submit"]) to trigger PHP block only when form is submitted.',
+      'Set action="" to stay on the same page.'
     ],
     inputFields: [
       { name: 'num1', label: 'Dividend (भाज्य)', type: 'number', defaultValue: 25, required: true },
@@ -61,6 +63,8 @@ export const phpProblems: Problem[] = [
     id: 'php-seta-2',
     title: 'Swap Two Variables',
     marathiTitle: 'दोन संख्यांचे मूल्य स्वॅप (अदलाबदल) करणे',
+    questionStatement: 'Q. Write a PHP script to accept two variables A and B from the user and swap their values using a temporary variable ($temp). Display values before and after swapping.',
+    marathiQuestionStatement: 'प्रश्न: A आणि B या दोन संख्यांचे मूल्य स्वीकारून तिसऱ्या तात्पुरत्या ($temp) व्हेरियबलचा वापर करून त्यांच्या मूल्यांची अदलाबदल (Swapping) करणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET A',
     description: 'Swaps values of variable A and variable B using a temporary variable $temp and displays before and after values.',
@@ -99,12 +103,12 @@ export const phpProblems: Problem[] = [
 </body>
 </html>`,
     explanation: {
-      en: 'Stores variable $a into $temp, reassigns $a = $b, and then sets $b = $temp to complete the swap.',
-      mr: '$temp नावाच्या तिसऱ्या बॉक्समध्ये $a ची किंमत ठेवून अ‍ॅड्रेस किंवा व्हॅल्यू एक्सचेंज केली जाते.'
+      en: 'Stores $a in $temp, sets $a = $b, and then sets $b = $temp to complete value exchange.',
+      mr: 'प्रथमतः $a चे मूल्य $temp मध्ये सेव्ह केले जाते, नंतर $a मधे $b चे आणि $b मधे $temp चे मूल्य टाकून स्वॅपिंग पूर्ण केले जाते.'
     },
     keyTakeaways: [
-      'Classic 3-variable swap algorithm.',
-      'Safely checks `isset($_POST["submit"])` to avoid Notice: Undefined index warnings.'
+      'Standard 3-variable swap algorithm.',
+      'Output clearly displays state before and after operation.'
     ],
     inputFields: [
       { name: 'a', label: 'Value of A', type: 'number', defaultValue: 10, required: true },
@@ -114,10 +118,13 @@ export const phpProblems: Problem[] = [
   {
     id: 'php-seta-3',
     title: 'Celsius to Fahrenheit Converter',
-    marathiTitle: 'सेल्सिअसचे फॅरेनहाईटमध्ये रुपांतर करणे',
+    marathiTitle: 'सेल्यिअसचे (C) फॅरेनहाइटमध्ये (F) रुपांतर करणे',
+    questionStatement: 'Q. Write a PHP script to convert temperature from Celsius (°C) to Fahrenheit (°F) using the conversion formula F = (C * 9/5) + 32.',
+    marathiQuestionStatement: 'प्रश्न: F = (C * 9/5) + 32 या सूत्राचा वापर करून सेल्यिअस (°C) तापमानाचे फॅरेनहाइट (°F) मध्ये रूपांतर करणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET A',
-    description: 'Converts temperature from Celsius (°C) to Fahrenheit (°F) using the formula F = (C * 9/5) + 32.',
+    description: 'Accepts temperature in Celsius from HTML form and converts it to Fahrenheit using standard formula F = (C * 9/5) + 32.',
+    marathiNote: 'गुणाकार आणि भागाकार गर्दी टाळण्यासाठी कौंस `(C * 9/5) + 32` स्पष्टपणे वापरला आहे.',
     filename: 'celsius_fahrenheit.php',
     code: `<!DOCTYPE html>
 <html>
@@ -125,48 +132,54 @@ export const phpProblems: Problem[] = [
     <title>Temperature Converter</title>
 </head>
 <body>
-    <h2>Convert Celsius to Fahrenheit</h2>
+    <h2>Celsius to Fahrenheit Converter</h2>
     <form method="post" action="">
         Temperature in Celsius (°C): <input type="number" step="any" name="celsius" required><br><br>
-        <input type="submit" name="submit" value="Convert">
+        <input type="submit" name="submit" value="Convert to Fahrenheit">
     </form>
 
     <?php
     if (isset($_POST['submit'])) {
-        $c = (float)$_POST['celsius'];
-        $f = ($c * 9 / 5) + 32;
+        $celsius = (float)$_POST['celsius'];
+        $fahrenheit = ($celsius * 9 / 5) + 32;
 
         echo "<h3>--- Result ---</h3>";
-        echo "$c &deg;C = " . round($f, 2) . " &deg;F";
+        echo "Temperature in Celsius: " . $celsius . " °C<br>";
+        echo "Temperature in Fahrenheit: " . number_format($fahrenheit, 2) . " °F<br>";
     }
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'Uses `step="any"` in the HTML float input and computes `$f = ($c * 9 / 5) + 32` with `round()` to 2 decimals.',
-      mr: 'दशांश संख्यांसाठी `step="any"` इनपुट टाईप वापरला आहे व `round($f, 2)` द्वारे पॉईंटनंतर २ अंक दाखवले आहेत.'
+      en: 'Applies arithmetic operators * and / with parenthesis operator precedence, then formats result with number_format().',
+      mr: 'गणिताच्या नियमानुसार गुणिले ९ भागिले ५ करून ३२ मिळवले जातात. उत्तर `number_format()` द्वारे दशांश रूपात दाखवले जाते.'
     },
     keyTakeaways: [
-      'Formula: F = (C * 9/5) + 32.',
-      'Use `round($val, 2)` for formatted display.'
+      'Formula: $fahrenheit = ($celsius * 9 / 5) + 32;',
+      'Use type casting (float) for precise decimal temperature values.'
     ],
     inputFields: [
-      { name: 'celsius', label: 'Temperature in Celsius (°C)', type: 'number', step: 'any', defaultValue: 37, required: true }
+      { name: 'celsius', label: 'Celsius (°C)', type: 'number', step: 'any', defaultValue: 37, required: true }
     ]
   },
   {
     id: 'php-seta-4',
     title: 'Leap Year Checker',
-    marathiTitle: 'लीप वर्ष (Leap Year) तपासणे',
+    marathiTitle: 'दिलेले वर्ष लीप वर्ष (Leap Year) आहे की नाही हे तपासणे',
+    questionStatement: 'Q. Write a PHP script to accept a year from the user and check whether it is a Leap Year or not using logical operators (divisible by 400 OR divisible by 4 and not divisible by 100).',
+    marathiQuestionStatement: 'प्रश्न: युजरकडून वर्ष स्वीकारून ते वर्ष लीप वर्ष (Leap Year) आहे की नाही हे लॉजिकल ऑपरेटर्सचा (divisible by 400 OR divisible by 4 and not 100) वापर करून तपासणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET A',
-    description: 'Checks whether a user-entered year is a Leap Year using correct leap year logic (divisible by 400 OR divisible by 4 and not 100).',
+    description: 'Checks whether a year is a leap year using condition: `($year % 400 == 0) || ($year % 4 == 0 && $year % 100 != 0)`.',
+    marathiNote: 'शतक वर्ष (जसे 2000) 400 ने पूर्ण भाग जाणे आवश्यक असते, तर सामान्य वर्ष 4 ने भाग जाणे गरजेचे असते.',
     filename: 'leap_year.php',
     code: `<!DOCTYPE html>
 <html>
-<head><title>Leap Year Checker</title></head>
+<head>
+    <title>Leap Year Checker</title>
+</head>
 <body>
-    <h2>Check Leap Year</h2>
+    <h2>Leap Year Checker</h2>
     <form method="post" action="">
         Enter Year: <input type="number" name="year" required><br><br>
         <input type="submit" name="submit" value="Check Year">
@@ -177,100 +190,96 @@ export const phpProblems: Problem[] = [
         $year = (int)$_POST['year'];
 
         if (($year % 400 == 0) || ($year % 4 == 0 && $year % 100 != 0)) {
-            echo "<h3>$year is a Leap Year.</h3>";
+            echo "<h3 style='color:green;'>$year is a Leap Year!</h3>";
         } else {
-            echo "<h3>$year is NOT a Leap Year.</h3>";
+            echo "<h3 style='color:red;'>$year is NOT a Leap Year.</h3>";
         }
     }
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'Leap year condition: divisible by 400 OR (divisible by 4 AND NOT divisible by 100).',
-      mr: 'वर्ष ४०० ने पूर्ण भाग जाणारे असेल किंवा ४ ने भाग जाणारे पण १०० ने न भाग जाणारे असेल तर ते लीप वर्ष असते.'
+      en: 'Combines modulo operator % with logical AND (&&) and logical OR (||) conditions.',
+      mr: '% मॉड्युलस द्वारे बाकी 0 येते का ते पाहून && आणि || ऑपरेटर्स वापरले आहेत.'
     },
     keyTakeaways: [
-      'Condition: `($year % 400 == 0) || ($year % 4 == 0 && $year % 100 != 0)`'
+      'Leap year condition incorporates both 4-year and 400-year century rules.',
+      'Modulo operator `%` returns 0 for exact division.'
     ],
     inputFields: [
-      { name: 'year', label: 'Enter Year', type: 'number', defaultValue: 2024, required: true }
+      { name: 'year', label: 'Year (वर्ष)', type: 'number', defaultValue: 2024, required: true }
     ]
   },
   {
     id: 'php-seta-5',
-    title: 'Switch Case Calculator (+, -, *, /)',
-    marathiTitle: 'स्विच केसचा वापर करून कॅल्क्युलेटर',
+    title: 'Arithmetic Operations Calculator',
+    marathiTitle: 'गणितीय क्रिया (बेरीज, वजाबाकी, गुणाकार, भागाकार) कॅल्क्युलेटर',
+    questionStatement: 'Q. Write a PHP script to design an arithmetic calculator that accepts two numbers and an operator (+, -, *, /) from an HTML form and performs the corresponding calculation.',
+    marathiQuestionStatement: 'प्रश्न: दोन संख्या आणि गणितीय चिन्ह (+, -, *, /) स्वीकारून त्यानुसार बेरीज, वजाबाकी, गुणाकार किंवा भागाकार करणारी PHP कॅल्क्युलेटर स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET A',
-    description: 'Performs arithmetic operations (+, -, *, /) based on operator chosen from a dropdown select.',
-    filename: 'switch_calculator.php',
+    description: 'Accepts two numbers and an operator (+, -, *, /) from HTML dropdown form and executes requested mathematical operation using switch-case or if-else.',
+    marathiNote: 'फॉर्ममध्ये drop-down `<select>` चा वापर केला आहे.',
+    filename: 'arithmetic_calculator.php',
     code: `<!DOCTYPE html>
 <html>
-<head><title>Simple Calculator</title></head>
+<head>
+    <title>Arithmetic Calculator</title>
+</head>
 <body>
-    <h2>Calculator using Switch Case</h2>
+    <h2>Simple Calculator</h2>
     <form method="post" action="">
-        First Number: <input type="number" step="any" name="num1" required><br><br>
-        Second Number: <input type="number" step="any" name="num2" required><br><br>
-        Operation:
-        <select name="op" required>
+        Number 1: <input type="number" step="any" name="num1" required><br><br>
+        Operator: 
+        <select name="operator" required>
             <option value="+">Addition (+)</option>
             <option value="-">Subtraction (-)</option>
             <option value="*">Multiplication (*)</option>
             <option value="/">Division (/)</option>
         </select><br><br>
+        Number 2: <input type="number" step="any" name="num2" required><br><br>
         <input type="submit" name="submit" value="Calculate">
     </form>
 
     <?php
     if (isset($_POST['submit'])) {
-        $num1 = $_POST['num1'];
-        $num2 = $_POST['num2'];
-        $op = $_POST['op'];
+        $num1 = (float)$_POST['num1'];
+        $num2 = (float)$_POST['num2'];
+        $op = $_POST['operator'];
         $result = 0;
 
         switch ($op) {
-            case '+':
-                $result = $num1 + $num2;
-                echo "<h3>Result: $num1 + $num2 = $result</h3>";
-                break;
-            case '-':
-                $result = $num1 - $num2;
-                echo "<h3>Result: $num1 - $num2 = $result</h3>";
-                break;
-            case '*':
-                $result = $num1 * $num2;
-                echo "<h3>Result: $num1 * $num2 = $result</h3>";
-                break;
+            case '+': $result = $num1 + $num2; break;
+            case '-': $result = $num1 - $num2; break;
+            case '*': $result = $num1 * $num2; break;
             case '/':
                 if ($num2 == 0) {
-                    echo "<h3 style='color:red;'>Cannot divide by zero!</h3>";
-                } else {
-                    $result = $num1 / $num2;
-                    echo "<h3>Result: $num1 / $num2 = $result</h3>";
+                    echo "<h3 style='color:red;'>Error: Division by zero!</h3>";
+                    exit;
                 }
+                $result = $num1 / $num2;
                 break;
-            default:
-                echo "<h3>Invalid Choice!</h3>";
         }
+
+        echo "<h3>Result: $num1 $op $num2 = <span style='color:blue;'>$result</span></h3>";
     }
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'Uses `switch($op)` to evaluate operator string. Handles division by zero gracefully.',
-      mr: 'ड्रॉपडाऊनमधील निवडीनुसार `switch` स्टेटमेंट ऑपरेटर्सवरून अचूक गणिती उत्तर काढते.'
+      en: 'Uses PHP switch-case construct to select mathematical operation based on user input operator.',
+      mr: '`switch-case` रचनेचा वापर करून निवडलेल्या चिन्हाप्रमाणे योग्य गणितीय क्रिया पार पाडली जाते.'
     },
     keyTakeaways: [
-      'Clean control flow with `switch-case` and `break`.',
-      'Division zero check inside case `/`.'
+      'Switch-case makes multi-operator selection clean and readable.',
+      'Guards against division by zero in `/` case.'
     ],
     inputFields: [
-      { name: 'num1', label: 'First Number', type: 'number', step: 'any', defaultValue: 12, required: true },
-      { name: 'num2', label: 'Second Number', type: 'number', step: 'any', defaultValue: 4, required: true },
+      { name: 'num1', label: 'First Number', type: 'number', step: 'any', defaultValue: 15, required: true },
+      { name: 'num2', label: 'Second Number', type: 'number', step: 'any', defaultValue: 5, required: true },
       {
-        name: 'op',
-        label: 'Operation',
+        name: 'operator',
+        label: 'Select Operator',
         type: 'select',
         defaultValue: '+',
         options: [
@@ -278,27 +287,31 @@ export const phpProblems: Problem[] = [
           { label: 'Subtraction (-)', value: '-' },
           { label: 'Multiplication (*)', value: '*' },
           { label: 'Division (/)', value: '/' }
-        ],
-        required: true
+        ]
       }
     ]
   },
   {
     id: 'php-seta-6',
-    title: 'Student Grade Evaluator',
-    marathiTitle: 'टक्केवारीनुसार श्रेणी (Grade) ठरवणे',
+    title: 'Percentage and Grade Evaluator',
+    marathiTitle: 'टक्केवारीवरून (Percentage) श्रेणी (Grade) ठरवणे',
+    questionStatement: 'Q. Write a PHP script to accept student percentage from user and assign Grade based on conditions: >=70 Distinction, >=60 First Class, >=50 Higher Second Class, >=40 Pass Class, <40 Fail.',
+    marathiQuestionStatement: 'प्रश्न: विद्यार्थ्याची टक्केवारी स्वीकारून गुणवत्तेनुसार (Distinction, First Class, Higher Second Class, Pass Class, Fail) श्रेणी देणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET A',
-    description: 'Determines student class grade based on percentage using nested elseif conditions.',
-    filename: 'student_grade.php',
+    description: 'Evaluates percentage using ladder if-else-if construct to assign Distinction, First Class, Higher Second Class, Pass Class, or Fail.',
+    marathiNote: '४० पेक्षा कमी गुण असल्यास Fail श्रेणी दिली जाते.',
+    filename: 'grade_evaluator.php',
     code: `<!DOCTYPE html>
 <html>
-<head><title>Student Grade</title></head>
+<head>
+    <title>Grade Evaluator</title>
+</head>
 <body>
-    <h2>Check Student Grade</h2>
+    <h2>Student Grade Calculator</h2>
     <form method="post" action="">
-        Enter Percentage: <input type="number" step="any" min="0" max="100" name="per" required><br><br>
-        <input type="submit" name="submit" value="Get Grade">
+        Enter Percentage (%): <input type="number" step="0.01" min="0" max="100" name="per" required><br><br>
+        <input type="submit" name="submit" value="Evaluate Grade">
     </form>
 
     <?php
@@ -306,53 +319,56 @@ export const phpProblems: Problem[] = [
         $per = (float)$_POST['per'];
         $grade = "";
 
-        if ($per < 40) {
-            $grade = "Fail";
-        } elseif ($per >= 40 && $per <= 50) {
-            $grade = "Pass Class";
-        } elseif ($per > 50 && $per <= 60) {
-            $grade = "Higher Second Class";
-        } elseif ($per > 60 && $per <= 70) {
+        if ($per >= 70 && $per <= 100) {
+            $grade = "First Class with Distinction 🌟";
+        } elseif ($per >= 60 && $per < 70) {
             $grade = "First Class";
+        } elseif ($per >= 50 && $per < 60) {
+            $grade = "Higher Second Class";
+        } elseif ($per >= 40 && $per < 50) {
+            $grade = "Pass Class";
         } else {
-            $grade = "First Class with Distinction";
+            $grade = "Fail ❌";
         }
 
         echo "<h3>--- Result ---</h3>";
-        echo "Percentage: $per % <br>";
-        echo "<b>Grade: $grade</b>";
+        echo "Percentage: " . $per . " %<br>";
+        echo "Grade: <strong>" . $grade . "</strong><br>";
     }
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'Evaluates percentage against predefined grade bands (Fail <40, Pass 40-50, Higher 2nd 50-60, 1st 60-70, Distinction >70).',
-      mr: 'विद्यार्थ्याच्या टक्केवारीनुसार श्रेणी (Grade) ठरवली जाते.'
+      en: 'Evaluates ranges sequentially with if-elseif-else logic starting from highest grade boundary.',
+      mr: '`if-elseif-else` च्या साखळीचा वापर करून टक्केवारीच्या मर्यादेनुसार ग्रेड ठरवली जाते.'
     },
     keyTakeaways: [
-      'HTML boundary validation via `min="0" max="100"`.'
+      'Sequential range testing from highest threshold (70%) down to lowest (40%).'
     ],
     inputFields: [
-      { name: 'per', label: 'Enter Percentage (0-100)', type: 'number', step: 'any', min: 0, max: 100, defaultValue: 76.5, required: true }
+      { name: 'per', label: 'Percentage (%)', type: 'number', step: '0.01', defaultValue: 75.5, min: 0, max: 100, required: true }
     ]
   },
 
   // --- SET B ---
   {
     id: 'php-setb-1',
-    title: 'Surface Area and Volume of Cuboid',
-    marathiTitle: 'क्यूबॉईडचे पृष्ठफळ (Surface Area) आणि घनफळ (Volume)',
+    title: 'Cuboid Surface Area & Volume Calculator',
+    marathiTitle: 'इष्टिकाचितीचे (Cuboid) पृष्ठफळ आणि घनफळ काढणे',
+    questionStatement: 'Q. Write a PHP script to accept Length, Breadth, and Height of a Cuboid and calculate its Total Surface Area (2*(l*b + l*h + b*h)) and Volume (l*b*h).',
+    marathiQuestionStatement: 'प्रश्न: इष्टिकाचितीची (Cuboid) लांबी (l), रुंदी (b) आणि उंची (h) स्वीकारून तिचे एकूण पृष्ठफळ (Surface Area) आणि घनफळ (Volume) काढणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET B',
-    description: 'Calculates Surface Area = 2*(lb + lh + bh) and Volume = l*b*h for length, breadth, and height of a cuboid.',
-    filename: 'cuboid_calculation.php',
+    description: 'Calculates Surface Area = 2*(l*b + l*h + b*h) and Volume = l*b*h of a cuboid based on HTML form inputs.',
+    marathiNote: 'Surface Area = 2*(l*b + l*h + b*h) आणि Volume = l*b*h ही सूत्रे वापरली आहेत.',
+    filename: 'cuboid_calculator.php',
     code: `<!DOCTYPE html>
 <html>
 <head>
-    <title>Cuboid Calculation</title>
+    <title>Cuboid Calculator</title>
 </head>
 <body>
-    <h2>Cuboid Surface Area & Volume</h2>
+    <h2>Surface Area and Volume of Cuboid</h2>
     <form method="post" action="">
         Length (l): <input type="number" step="any" name="l" required><br><br>
         Breadth (b): <input type="number" step="any" name="b" required><br><br>
@@ -366,23 +382,23 @@ export const phpProblems: Problem[] = [
         $b = (float)$_POST['b'];
         $h = (float)$_POST['h'];
 
-        $surface_area = 2 * (($l * $b) + ($l * $h) + ($b * $h));
+        $surface_area = 2 * ($l * $b + $l * $h + $b * $h);
         $volume = $l * $b * $h;
 
         echo "<h3>--- Result ---</h3>";
-        echo "Surface Area = " . round($surface_area, 2) . " sq. units<br>";
-        echo "Volume = " . round($volume, 2) . " cubic units<br>";
+        echo "Surface Area = " . number_format($surface_area, 2) . " sq. units<br>";
+        echo "Volume = " . number_format($volume, 2) . " cubic units<br>";
     }
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'Formulas: Surface Area = 2*(l*b + l*h + b*h), Volume = l*b*h.',
-      mr: 'लंबी, रुंदी आणि उंचीवरून Cuboid चे पृष्ठफळ आणि घनफळ अचूक काढले जाते.'
+      en: 'Applies geometric formulas for 3D cuboid measurement.',
+      mr: 'त्रिमितीय भौमितिक सूत्रांचा वापर करून घनफळ आणि पृष्ठफळ काढले जाते.'
     },
     keyTakeaways: [
-      'Surface Area formula: 2*(l*b + l*h + b*h)',
-      'Volume formula: l*b*h'
+      '3D geometry math formulas implemented cleanly.',
+      'Form inputs restricted to positive floats.'
     ],
     inputFields: [
       { name: 'l', label: 'Length (l)', type: 'number', step: 'any', defaultValue: 10, required: true },
@@ -392,25 +408,34 @@ export const phpProblems: Problem[] = [
   },
   {
     id: 'php-setb-2',
-    title: 'Area of Circle, Square, and Rectangle',
-    marathiTitle: 'वर्तुळ, चौरस आणि आयताचे क्षेत्रफळ काढणे',
+    title: 'Area of Shapes (Circle, Square, Rectangle)',
+    marathiTitle: 'वर्तुळ, चौरस आणि आयत यांचे क्षेत्रफळ काढणे',
+    questionStatement: 'Q. Write a PHP script to accept dimensions for Circle (Radius), Square (Side), and Rectangle (Length & Width) and display the Area of all three geometric shapes.',
+    marathiQuestionStatement: 'प्रश्न: वर्तुळाची त्रिज्या (r), चौरसाची बाजू (s), आणि आयताची लांबी (l) व रुंदी (w) स्वीकारून तिन्ही भौमितिक आकारांचे क्षेत्रफळ (Area) काढणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET B',
-    description: 'Calculates area of circle (pi*r^2), square (side^2), and rectangle (length*width) from form inputs.',
-    filename: 'area_calculator.php',
+    description: 'Calculates Area of Circle (πr²), Area of Square (s²), and Area of Rectangle (l*w) in a single unified PHP form.',
+    marathiNote: 'वर्तुळाच्या क्षेत्रफळासाठी `pi()` किंवा `3.14159` चा वापर केला आहे.',
+    filename: 'shapes_area.php',
     code: `<!DOCTYPE html>
 <html>
 <head>
-    <title>Area Calculator</title>
+    <title>Area of Shapes</title>
 </head>
 <body>
-    <h2>Area of Circle, Square and Rectangle</h2>
+    <h2>Calculate Area of Shapes</h2>
     <form method="post" action="">
-        Radius of Circle: <input type="number" step="any" name="r" required><br><br>
-        Side of Square: <input type="number" step="any" name="s" required><br><br>
-        Length of Rectangle: <input type="number" step="any" name="l" required><br><br>
-        Breadth of Rectangle: <input type="number" step="any" name="w" required><br><br>
-        <input type="submit" name="submit" value="Calculate All">
+        <h3>1. Circle</h3>
+        Radius (r): <input type="number" step="any" name="r" required><br>
+
+        <h3>2. Square</h3>
+        Side (s): <input type="number" step="any" name="s" required><br>
+
+        <h3>3. Rectangle</h3>
+        Length (l): <input type="number" step="any" name="l" required><br>
+        Width (w): <input type="number" step="any" name="w" required><br><br>
+
+        <input type="submit" name="submit" value="Calculate All Areas">
     </form>
 
     <?php
@@ -424,37 +449,38 @@ export const phpProblems: Problem[] = [
         $area_square = $s * $s;
         $area_rectangle = $l * $w;
 
-        echo "<h3>--- Areas ---</h3>";
-        echo "Area of Circle: " . round($area_circle, 2) . " sq. units<br>";
-        echo "Area of Square: " . round($area_square, 2) . " sq. units<br>";
-        echo "Area of Rectangle: " . round($area_rectangle, 2) . " sq. units<br>";
+        echo "<h3>--- Calculated Areas ---</h3>";
+        echo "Area of Circle (r=$r) = " . number_format($area_circle, 2) . " sq. units<br>";
+        echo "Area of Square (s=$s) = " . number_format($area_square, 2) . " sq. units<br>";
+        echo "Area of Rectangle (l=$l, w=$w) = " . number_format($area_rectangle, 2) . " sq. units<br>";
     }
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'Uses `pi()` function for circle area and standard arithmetic for square and rectangle.',
-      mr: '`pi()` फंक्शन वर्तुळाच्या क्षेत्रफळासाठी वापरले आहे.'
+      en: 'Uses pi() built-in math function for circle area and standard algebraic multiplication for square and rectangle.',
+      mr: '`pi()` फंक्शन वर्तुळाच्या क्षेत्रफळासाठी वापरून गणितीय उत्तर शोधले आहे.'
     },
     keyTakeaways: [
-      'Circle: pi() * r^2',
-      'Square: s^2',
-      'Rectangle: l * w'
+      'PHP built-in math function `pi()` gives high precision PI value.'
     ],
     inputFields: [
-      { name: 'r', label: 'Radius of Circle (r)', type: 'number', step: 'any', defaultValue: 7, required: true },
-      { name: 's', label: 'Side of Square (s)', type: 'number', step: 'any', defaultValue: 5, required: true },
-      { name: 'l', label: 'Length of Rectangle (l)', type: 'number', step: 'any', defaultValue: 8, required: true },
-      { name: 'w', label: 'Width of Rectangle (w)', type: 'number', step: 'any', defaultValue: 4, required: true }
+      { name: 'r', label: 'Circle Radius (r)', type: 'number', step: 'any', defaultValue: 7, required: true },
+      { name: 's', label: 'Square Side (s)', type: 'number', step: 'any', defaultValue: 6, required: true },
+      { name: 'l', label: 'Rectangle Length (l)', type: 'number', step: 'any', defaultValue: 12, required: true },
+      { name: 'w', label: 'Rectangle Width (w)', type: 'number', step: 'any', defaultValue: 8, required: true }
     ]
   },
   {
     id: 'php-setb-3',
-    title: '5 Subjects Marksheet & Percentage',
-    marathiTitle: '५ विषयांची एकूण बेरीज आणि टक्केवारी (Marksheet)',
+    title: 'Student Marksheet Generator',
+    marathiTitle: 'विद्यार्थ्याचे गुणपत्रक (Marksheet) तयार करणे',
+    questionStatement: 'Q. Write a PHP script to accept marks of 5 subjects (DS, DM, PHP, SE, BigData) out of 100, calculate Total Marks (out of 500), Percentage, and print a formatted student mark sheet.',
+    marathiQuestionStatement: 'प्रश्न: ५ विषयांचे गुण (प्रत्येकी १०० पैकी) स्वीकारून एकूण गुण (५०० पैकी) आणि टक्केवारी (Percentage) दाखवणारे विद्यार्थी गुणपत्रक (Marksheet) जनरेट करणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET B',
-    description: 'Calculates Total Marks and Percentage out of 500 for Data Structure, Digital Marketing, PHP, Software Engineering, and Big Data.',
+    description: 'Accepts marks of 5 subjects (Data Structure, Digital Marketing, PHP, Software Engg, BigData) out of 100, calculates total (500) and percentage.',
+    marathiNote: 'सर्व ५ विषयांची बेरीज करून भागिले ५ केल्यास टक्केवारी मिळते.',
     filename: 'student_marksheet.php',
     code: `<!DOCTYPE html>
 <html>
@@ -462,77 +488,87 @@ export const phpProblems: Problem[] = [
     <title>Student Marksheet</title>
 </head>
 <body>
-    <h2>Enter Subject Marks (Out of 100)</h2>
+    <h2>Enter Subject Marks (out of 100)</h2>
     <form method="post" action="">
-        Data Structure: <input type="number" min="0" max="100" name="ds" required><br><br>
-        Digital Marketing: <input type="number" min="0" max="100" name="dm" required><br><br>
-        PHP: <input type="number" min="0" max="100" name="php" required><br><br>
-        SE (Software Engg): <input type="number" min="0" max="100" name="se" required><br><br>
-        Bigdata: <input type="number" min="0" max="100" name="bigdata" required><br><br>
-        <input type="submit" name="submit" value="Calculate Result">
+        Data Structure: <input type="number" min="0" max="100" name="sub1" required><br><br>
+        Digital Marketing: <input type="number" min="0" max="100" name="sub2" required><br><br>
+        PHP Scripting: <input type="number" min="0" max="100" name="sub3" required><br><br>
+        Software Engineering: <input type="number" min="0" max="100" name="sub4" required><br><br>
+        Big Data Analytics: <input type="number" min="0" max="100" name="sub5" required><br><br>
+        <input type="submit" name="submit" value="Generate Marksheet">
     </form>
 
     <?php
     if (isset($_POST['submit'])) {
-        $ds = (float)$_POST['ds'];
-        $dm = (float)$_POST['dm'];
-        $php = (float)$_POST['php'];
-        $se = (float)$_POST['se'];
-        $bigdata = (float)$_POST['bigdata'];
+        $s1 = (float)$_POST['sub1'];
+        $s2 = (float)$_POST['sub2'];
+        $s3 = (float)$_POST['sub3'];
+        $s4 = (float)$_POST['sub4'];
+        $s5 = (float)$_POST['sub5'];
 
-        $total = $ds + $dm + $php + $se + $bigdata;
+        $total = $s1 + $s2 + $s3 + $s4 + $s5;
         $percentage = ($total / 500) * 100;
 
-        echo "<h3>--- Result ---</h3>";
-        echo "Data Structure: $ds / 100<br>";
-        echo "Digital Marketing: $dm / 100<br>";
-        echo "PHP: $php / 100<br>";
-        echo "SE: $se / 100<br>";
-        echo "Bigdata: $bigdata / 100<br>";
+        echo "<h3>--- MARKSHEET ---</h3>";
+        echo "Data Structure: $s1 / 100<br>";
+        echo "Digital Marketing: $s2 / 100<br>";
+        echo "PHP Scripting: $s3 / 100<br>";
+        echo "Software Engineering: $s4 / 100<br>";
+        echo "Big Data Analytics: $s5 / 100<br>";
         echo "<hr>";
-        echo "<b>Total Marks: " . $total . " / 500</b><br>";
-        echo "<b>Percentage: " . round($percentage, 2) . "%</b><br>";
+        echo "<strong>Total Marks:</strong> $total / 500<br>";
+        echo "<strong>Percentage:</strong> " . number_format($percentage, 2) . " %<br>";
     }
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'Sums up 5 subject marks out of 100 and computes percentage = (Total / 500) * 100.',
-      mr: '५ विषयांचे गुण जोडून ५०० पैकी एकूण बेरीज आणि टक्केवारी दाखवली जाते.'
+      en: 'Sums 5 numerical variables and calculates percentage over 500 total possible marks.',
+      mr: 'पाच विषयांच्या गुणांची बेरीज करुन एकूण टक्केवारी ५०० पैकी काढली आहे.'
     },
     keyTakeaways: [
-      'HTML `min="0" max="100"` guards mark input range.'
+      'HTML input validation restricts input range from 0 to 100.'
     ],
     inputFields: [
-      { name: 'ds', label: 'Data Structure', type: 'number', min: 0, max: 100, defaultValue: 85, required: true },
-      { name: 'dm', label: 'Digital Marketing', type: 'number', min: 0, max: 100, defaultValue: 78, required: true },
-      { name: 'php', label: 'PHP', type: 'number', min: 0, max: 100, defaultValue: 92, required: true },
-      { name: 'se', label: 'Software Engineering', type: 'number', min: 0, max: 100, defaultValue: 88, required: true },
-      { name: 'bigdata', label: 'Big Data', type: 'number', min: 0, max: 100, defaultValue: 80, required: true }
+      { name: 'sub1', label: 'Data Structure', type: 'number', defaultValue: 82, min: 0, max: 100, required: true },
+      { name: 'sub2', label: 'Digital Marketing', type: 'number', defaultValue: 75, min: 0, max: 100, required: true },
+      { name: 'sub3', label: 'PHP Scripting', type: 'number', defaultValue: 91, min: 0, max: 100, required: true },
+      { name: 'sub4', label: 'Software Engg', type: 'number', defaultValue: 68, min: 0, max: 100, required: true },
+      { name: 'sub5', label: 'Big Data Analytics', type: 'number', defaultValue: 85, min: 0, max: 100, required: true }
     ]
   },
   {
     id: 'php-setb-4',
-    title: 'Prime Numbers between 1 to 50',
+    title: 'Prime Numbers Generator (1 to 50)',
     marathiTitle: '१ ते ५० मधील मूळ संख्या (Prime Numbers) शोधणे',
+    questionStatement: 'Q. Write a PHP script to generate and print all Prime Numbers between 1 and 50 using nested loops and division check.',
+    marathiQuestionStatement: 'प्रश्न: नेस्टेड लूपचा (Nested Loops) वापर करून १ ते ५० या दरम्यानच्या सर्व मूळ संख्या (Prime Numbers) शोधून प्रिंट करणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET B',
-    description: 'Loops from 2 to 50 and outputs all prime numbers.',
-    filename: 'prime_1_to_50.php',
+    description: 'Finds and prints all prime numbers between 1 and 50 using nested for loops.',
+    marathiNote: 'ज्या संख्येला फक्त १ ने आणि स्वतःने भाग जातो तिला Prime Number म्हणतात.',
+    filename: 'prime_numbers.php',
     code: `<!DOCTYPE html>
 <html>
-<head><title>Prime Numbers</title></head>
+<head>
+    <title>Prime Numbers 1 to 50</title>
+</head>
 <body>
-    <h2>Prime Numbers Between 1 to 50:</h2>
+    <h2>Prime Numbers Between 1 and 50</h2>
+
     <?php
+    echo "<h3>List of Prime Numbers:</h3>";
+
     for ($i = 2; $i <= 50; $i++) {
         $isPrime = true;
+
         for ($j = 2; $j <= sqrt($i); $j++) {
             if ($i % $j == 0) {
                 $isPrime = false;
                 break;
             }
         }
+
         if ($isPrime) {
             echo $i . " ";
         }
@@ -541,73 +577,88 @@ export const phpProblems: Problem[] = [
 </body>
 </html>`,
     explanation: {
-      en: 'Uses trial division up to `sqrt($i)` for maximum efficiency when determining primality.',
-      mr: '१ ते ५० मधील मूळ संख्या शोधण्यासाठी २ पासून वर्गमुळापर्यंत (sqrt) भाग देऊन तपासणी केली जाते.'
+      en: 'Inner loop checks division up to sqrt($i); if remainder is 0, number is composite, otherwise prime.',
+      mr: 'नेस्टेड लूप वापरून १ ने आणि स्वतःनेच भाग जाणाऱ्या संख्या शोधून प्रिंट केल्या जातात.'
     },
     keyTakeaways: [
-      'Optimize primality check bound using `sqrt($i)`.'
-    ],
-    inputFields: []
+      'Optimization: Limit divisor loop to sqrt($i).',
+      'First prime number starts at 2.'
+    ]
   },
   {
     id: 'php-setb-5',
-    title: 'Perfect Numbers between 1 to 100',
-    marathiTitle: '१ ते १०० मधील पर्फेक्ट नंबर्स (Perfect Numbers)',
+    title: 'Perfect Numbers Generator (1 to 100)',
+    marathiTitle: '१ ते १०० मधील परफेक्ट संख्या (Perfect Numbers) शोधणे',
+    questionStatement: 'Q. Write a PHP script to find and print all Perfect Numbers between 1 and 100 (A perfect number is a number equal to the sum of its proper divisors, e.g. 6 = 1 + 2 + 3).',
+    marathiQuestionStatement: 'प्रश्न: ज्या संख्येच्या सर्व भाजकांची बेरीज त्या संख्येइतकीच येते (उदा. ६ = १+२+३), अशा १ ते १०० मधील सर्व परफेक्ट संख्या (Perfect Numbers) शोधणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET B',
-    description: 'Finds numbers equal to the sum of their proper divisors (e.g. 6 = 1 + 2 + 3).',
+    description: 'Checks if sum of proper divisors equals the original number for range 1 to 100 (e.g., 6 = 1 + 2 + 3).',
+    marathiNote: 'उदा. ६ चे भाजक १, २, ३ आहेत आणि १+२+३ = ६ म्हणून ६ हा Perfect Number आहे.',
     filename: 'perfect_numbers.php',
     code: `<!DOCTYPE html>
 <html>
-<head><title>Perfect Numbers</title></head>
+<head>
+    <title>Perfect Numbers 1 to 100</title>
+</head>
 <body>
-    <h2>Perfect Numbers Between 1 to 100:</h2>
+    <h2>Perfect Numbers Between 1 and 100</h2>
+
     <?php
+    echo "<h3>Perfect Numbers Found:</h3>";
+
     for ($num = 1; $num <= 100; $num++) {
         $sum = 0;
+
         for ($i = 1; $i <= $num / 2; $i++) {
             if ($num % $i == 0) {
                 $sum += $i;
             }
         }
+
         if ($sum == $num && $num != 0) {
-            echo "<b>$num</b> is a Perfect Number.<br>";
+            echo "<strong>$num</strong> is a Perfect Number (Sum of divisors = $sum)<br>";
         }
     }
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'A perfect number equals the sum of its divisors (excluding itself). e.g., 6 and 28.',
-      mr: 'संख्या स्वतः सोडून तिच्या इतर सर्व भाजकांची बेरीज त्या संख्येइतकीच आली तर ती Perfect Number (उदा. 6, 28) असते.'
+      en: 'Sums proper divisors of $num up to $num/2 and tests if $sum == $num.',
+      mr: 'संख्या १ ते १०० पर्यंत तपासून तिच्या अर्ध्या भागापर्यंतच्या सर्व भाजकांची बेरीज संख्या स्वतःयेते का ते तपासले आहे.'
     },
     keyTakeaways: [
-      'Divisor search limit: `$i <= $num / 2`.'
-    ],
-    inputFields: []
+      'Perfect number definition: Sum of proper divisors equals number itself.',
+      '6 and 28 are the prime perfect numbers under 100.'
+    ]
   },
   {
     id: 'php-setb-6',
-    title: 'Reverse of a Number (e.g., 607 => 706)',
-    marathiTitle: 'संख्येची उलटी क्रमाने मांडणी (Reverse Number)',
+    title: 'Reverse an Integer Number',
+    marathiTitle: 'पूर्णांक संख्या उलट (Reverse) करणे',
+    questionStatement: 'Q. Write a PHP script to accept an integer number from the user and reverse its digits using a while loop and arithmetic operations (% 10 and / 10).',
+    marathiQuestionStatement: 'प्रश्न: युजरकडून पूर्णांक संख्या स्वीकारून while लूप आणि % 10 चा वापर करून त्या संख्येचे अंक उलट (Reverse Number) करणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET B',
-    description: 'Reverses digits of an integer using a while loop with modulo 10 and division 10.',
+    description: 'Reverses digits of an integer using while loop with modulo 10 and integer division.',
+    marathiNote: 'While loop वापरून % 10 ने शेवटचा अंक काढून नवीन संख्येत जोडला जातो.',
     filename: 'reverse_number.php',
     code: `<!DOCTYPE html>
 <html>
-<head><title>Reverse a Number</title></head>
+<head>
+    <title>Reverse Number</title>
+</head>
 <body>
-    <h2>Reverse of a Number</h2>
+    <h2>Reverse an Integer Number</h2>
     <form method="post" action="">
-        Enter a Number: <input type="number" name="num" required><br><br>
+        Enter Number: <input type="number" name="num" required><br><br>
         <input type="submit" name="submit" value="Reverse">
     </form>
 
     <?php
     if (isset($_POST['submit'])) {
         $num = (int)$_POST['num'];
-        $temp = $num;
+        $temp = abs($num);
         $rev = 0;
 
         while ($temp > 0) {
@@ -616,37 +667,50 @@ export const phpProblems: Problem[] = [
             $temp = (int)($temp / 10);
         }
 
+        if ($num < 0) {
+            $rev = -$rev;
+        }
+
         echo "<h3>Original Number: $num</h3>";
-        echo "<h3>Reversed Number: $rev</h3>";
+        echo "<h3 style='color:green;'>Reversed Number: $rev</h3>";
     }
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'Repeatedly extracts last digit using `$rem = $temp % 10` and builds reversed integer `$rev = ($rev * 10) + $rem`.',
-      mr: 'शेवटचा अंक % 10 ने काढून उलट क्रमांकाची संख्या बनवली जाते.'
+      en: 'Extracts last digit via $temp % 10, appends to $rev = ($rev * 10) + $rem, and shrinks $temp = $temp / 10.',
+      mr: '% 10 ने शेवटचा अंक मिळवला जातो आणि ($rev * 10) + $rem करून उलट संख्या बनवली जाते.'
     },
     keyTakeaways: [
-      'Standard arithmetic digits reversal algorithm.'
+      'Standard number digit reversal algorithm using while loop.',
+      'Handles negative integers using `abs()`.'
     ],
     inputFields: [
-      { name: 'num', label: 'Enter a Number', type: 'number', defaultValue: 607, required: true }
+      { name: 'num', label: 'Enter Integer Number', type: 'number', defaultValue: 12345, required: true }
     ]
   },
   {
     id: 'php-setb-7',
-    title: 'Armstrong Numbers between 1 to 500',
-    marathiTitle: '१ ते ५०० मधील आर्मस्ट्राँग संख्या (Armstrong Numbers)',
+    title: 'Armstrong Numbers Generator (1 to 500)',
+    marathiTitle: '१ ते ५०० मधील आर्मस्ट्राँग संख्या (Armstrong Numbers) शोधणे',
+    questionStatement: 'Q. Write a PHP script to find and print all Armstrong Numbers between 1 and 500 (An Armstrong number is a number where the sum of the cubes of its digits equals the number itself, e.g. 153 = 1³ + 5³ + 3³).',
+    marathiQuestionStatement: 'प्रश्न: ज्या संख्येतील अंकांच्या घनांची बेरीज (Sum of Cubes) त्या संख्येइतकीच येते (उदा. १५३ = १³ + ५³ + ३³), अशा १ ते ५०० मधील आर्मस्ट्राँग संख्या (Armstrong Numbers) शोधणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET B',
-    description: 'Displays numbers where sum of cubes of individual digits equals the number itself (e.g. 153 = 1^3 + 5^3 + 3^3).',
+    description: 'Finds all 3-digit Armstrong numbers between 1 and 500 where sum of cubes of digits equals the number (e.g. 153 = 1³ + 5³ + 3³).',
+    marathiNote: 'उदा. 153 मधील अंकांच्या घनांची बेरीज 1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153 येते.',
     filename: 'armstrong_numbers.php',
     code: `<!DOCTYPE html>
 <html>
-<head><title>Armstrong Numbers</title></head>
+<head>
+    <title>Armstrong Numbers 1 to 500</title>
+</head>
 <body>
-    <h2>Armstrong Numbers Between 1 to 500:</h2>
+    <h2>Armstrong Numbers Between 1 and 500</h2>
+
     <?php
+    echo "<h3>Armstrong Numbers Found:</h3>";
+
     for ($i = 1; $i <= 500; $i++) {
         $temp = $i;
         $sum = 0;
@@ -658,317 +722,342 @@ export const phpProblems: Problem[] = [
         }
 
         if ($sum == $i) {
-            echo $i . "<br>";
+            echo "<strong>$i</strong> is an Armstrong Number<br>";
         }
     }
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'Checks if sum of cubes of digits equals original number. Output: 1, 153, 370, 371, 407.',
-      mr: 'अंकांच्या घनाचा (cube) बेरीज मूळ संख्येइतकीच असल्यास ती Armstrong संख्या असते (उदा. 153).'
+      en: 'Extracts digits, cubes each digit, sums them up, and compares against original number.',
+      mr: 'प्रत्येक अंकाचा घन (Cube) करून बेरीज मुळ संख्येशी जुळते का ते तपासले आहे.'
     },
     keyTakeaways: [
-      'Digit cube sum formula.'
-    ],
-    inputFields: []
+      '3-digit Armstrong formula: $sum += $rem * $rem * $rem;',
+      'Examples under 500: 1, 153, 370, 371, 407.'
+    ]
   },
   {
     id: 'php-setb-8',
-    title: 'Operations on Indexed Array (Union & Random Traverse)',
-    marathiTitle: 'इंडेक्स अरेवर क्रिया (Union आणि Random Traverse)',
+    title: 'Array Union and Random Order Traversal',
+    marathiTitle: 'अरे युनियन (Union) आणि यादृच्छिक (Random Order) घटक प्रिंट करणे',
+    questionStatement: 'Q. Write a PHP script to perform array operations: a) Find the Union of two indexed arrays b) Traverse and display array elements in random order.',
+    marathiQuestionStatement: 'प्रश्न: दोन इंडेक्सड् अरेवरील क्रिया पार पाडणारी PHP स्क्रिप्ट लिहा: अ) दोन अरेचा युनियन (Union) शोधणे आ) अरे मधील घटक यादृच्छिक (Random) क्रमाने प्रिंट करणे.',
     subject: 'php',
     set: 'SET B',
-    description: 'Performs array operations including union using `array_unique(array_merge())` and random traversal with `shuffle()`.',
-    filename: 'indexed_array_ops.php',
-    code: `<?php
-$array1 = array(10, 20, 30, 40);
-$array2 = array(30, 40, 50, 60);
+    description: 'Performs array operations: a) Computes Union of two arrays b) Displays array elements in random shuffled order.',
+    marathiNote: '`array_unique(array_merge($a1, $a2))` चा वापर युनियनसाठी आणि `shuffle()` चा वापर रँडम क्रमासाठी केला आहे.',
+    filename: 'array_union_random.php',
+    code: `<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Operations</title>
+</head>
+<body>
+    <h2>Array Union & Random Traversal</h2>
 
-echo "<h3>Array 1:</h3>";
-print_r($array1);
-echo "<h3>Array 2:</h3>";
-print_r($array2);
+    <?php
+    $arr1 = array(10, 20, 30, 40);
+    $arr2 = array(30, 40, 50, 60);
 
-// a) Union of two arrays
-$union = array_unique(array_merge($array1, $array2));
-echo "<h3>a) Union of two arrays:</h3>";
-print_r($union);
+    echo "<h3>Array 1: " . implode(", ", $arr1) . "</h3>";
+    echo "<h3>Array 2: " . implode(", ", $arr2) . "</h3>";
 
-// b) Traverse the array elements in random order
-echo "<h3>b) Traverse elements in random order:</h3>";
-$random_array = $array1;
-shuffle($random_array); // shuffles array
-foreach ($random_array as $val) {
-    echo $val . " ";
-}
-?>`,
+    // a) Union of two arrays
+    $union = array_unique(array_merge($arr1, $arr2));
+    echo "<h3>a) Union of Arrays:</h3>";
+    echo "[" . implode(", ", $union) . "]<br>";
+
+    // b) Random Order Traversal
+    $shuffled = $arr1;
+    shuffle($shuffled);
+    echo "<h3>b) Random Order Traversal of Array 1:</h3>";
+    foreach ($shuffled as $val) {
+        echo $val . " ";
+    }
+    ?>
+</body>
+</html>`,
     explanation: {
-      en: 'Demonstrates `array_merge()` + `array_unique()` for set union and `shuffle()` for randomized output traversal.',
-      mr: '`array_merge()` आणि `array_unique()` वापरून Union काढला जातो व `shuffle()` द्वारे रँडम ऑर्डरने अरे दाखवला जातो.'
+      en: 'Combines array_merge() and array_unique() for mathematical union set, and shuffle() for randomized array traversal.',
+      mr: '`array_merge()` आणि `array_unique()` ने युनियन बनवला जातो आणि `shuffle()` ने घटक रँडम दाखवले जातात.'
     },
     keyTakeaways: [
-      'Union: `array_unique(array_merge($a, $b))`',
-      'Random order: `shuffle($arr)`'
-    ],
-    inputFields: []
+      'array_unique() removes duplicate values.',
+      'shuffle() randomly reorders elements in-place.'
+    ]
   },
   {
     id: 'php-setb-9',
-    title: 'Operations on Associative Array',
-    marathiTitle: 'असोसिएटिव्ह अरेवर (Associative Array) विविध क्रिया',
+    title: 'Associative Array Key-Value Operations',
+    marathiTitle: 'असोसिएटिव्ह अरे - की-व्हॅल्यू जोड्या, साईझ आणि एलिमेंट डिलीट करणे',
+    questionStatement: 'Q. Write a PHP script to demonstrate Associative Array operations: a) Display element along with key b) Display size of array c) Delete an element using unset().',
+    marathiQuestionStatement: 'प्रश्न: असोसिएटिव्ह अरेवरील (Associative Array) क्रिया करणारी PHP स्क्रिप्ट लिहा: अ) की (Key) सह व्हॅल्यू प्रिंट करणे आ) अरेचा आकार (count/size) दाखवणे इ) unset() वापरून विशिष्ट घटक डिलीट करणे.',
     subject: 'php',
     set: 'SET B',
-    description: 'Shows displaying keys/values, array size with `count()`, deletion via `unset()`, reversing with `array_reverse()`, and random key shuffle.',
+    description: 'Associative array operations: a) Displays key-value pairs b) Displays size of array using count() c) Deletes an element using unset().',
+    marathiNote: '`foreach($arr as $key => $val)` द्वारे की आणि व्हॅल्यू दोन्ही दाखवले जातात.',
     filename: 'associative_array_ops.php',
-    code: `<?php
-$student = array(
-    "roll_no" => 101,
-    "name"    => "Rahul",
-    "course"  => "BCA",
-    "city"    => "Pune"
-);
+    code: `<!DOCTYPE html>
+<html>
+<head>
+    <title>Associative Array Operations</title>
+</head>
+<body>
+    <h2>Associative Array Operations</h2>
 
-// a) Display elements along with keys
-echo "<h3>a) Display elements along with keys:</h3>";
-foreach ($student as $key => $value) {
-    echo "$key : $value <br>";
-}
+    <?php
+    $student = array(
+        "roll_no" => 101,
+        "name" => "Rahul",
+        "course" => "BCA",
+        "city" => "Pune"
+    );
 
-// b) Display size of array
-echo "<h3>b) Size of the array:</h3>";
-echo "Total Elements = " . count($student) . "<br>";
+    // a) Display elements along with key
+    echo "<h3>a) Elements with Keys:</h3>";
+    foreach ($student as $key => $value) {
+        echo "Key: <strong>$key</strong> | Value: <strong>$value</strong><br>";
+    }
 
-// c) Delete an element from the given key
-echo "<h3>c) Delete an element (Deleting 'city'):</h3>";
-unset($student["city"]);
-print_r($student);
+    // b) Display size of array
+    $size = count($student);
+    echo "<h3>b) Size of Array:</h3>";
+    echo "Total Elements = $size<br>";
 
-// d) Reverse the order of elements
-echo "<h3>d) Reversed order of elements:</h3>";
-$reversed = array_reverse($student);
-print_r($reversed);
+    // c) Delete an element from array
+    unset($student["city"]);
 
-// e) Traverse the elements in random order
-echo "<h3>e) Traverse in random order:</h3>";
-$keys = array_keys($student);
-shuffle($keys);
-foreach ($keys as $k) {
-    echo "$k : " . $student[$k] . "<br>";
-}
-?>`,
+    echo "<h3>c) Array After Deleting 'city' Key:</h3>";
+    echo "<pre>";
+    print_r($student);
+    echo "</pre>";
+    ?>
+</body>
+</html>`,
     explanation: {
-      en: 'Covering key functions: `count()`, `unset($array[key])`, `array_reverse()`, `array_keys()`, and `shuffle()`.',
-      mr: 'की आणि व्हॅल्यूचे जोडपे हाताळण्यासाठी `foreach`, `unset()`, `count()` इत्यादी फंक्शन वापरले आहेत.'
+      en: 'Iterates key-value pairs using foreach ($arr as $k => $v), gets length via count(), and removes element via unset($arr["key"]).',
+      mr: '`foreach` द्वारे की-व्हॅल्यू दाखवले जातात, `count()` ने साईझ आणि `unset()` ने एलिमेंट काढला जातो.'
     },
     keyTakeaways: [
-      'Associative array uses Key => Value pairs.',
-      'Remove key with `unset($arr["key"])`.'
-    ],
-    inputFields: []
+      'Associative arrays store key => value mappings.',
+      'unset() permanently deletes array element by key.'
+    ]
   },
 
   // --- SET C ---
   {
     id: 'php-setc-1',
-    title: 'Air Ticket Reservation System & Total Cost',
-    marathiTitle: 'विमान तिकीट बुकिंग फॉर्म (Air Ticket Reservation)',
+    title: 'Air Ticket Reservation System',
+    marathiTitle: 'विमान तिकीट आरक्षण (Air Ticket Reservation) प्रणाली',
+    questionStatement: 'Q. Write a PHP script to accept Air Ticket Reservation details (Passenger Name, Gender, Contact, Address, Source, Destination, Date of Journey, No. of Passengers, Price per Ticket) and print a formatted receipt displaying Total Ticket Amount.',
+    marathiQuestionStatement: 'प्रश्न: विमान तिकीट आरक्षणाची माहिती (प्रवाशाचे नाव, लिंग, संपर्क, पत्ता, सुरुवात स्थान, अंतिम स्थान, प्रवासाची तारीख, प्रवाशांची संख्या, एका तिकिटाची किंमत) स्वीकारून एकूण रकमेसह तिकीट पावती (Receipt) जनरेट करणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET C',
-    description: 'Complete passenger booking details form calculating total amount payable = persons * price_per_ticket formatted with rupee symbol.',
+    description: 'Comprehensive Air Ticket Reservation System taking passenger details, route, journey date, seat count, ticket price, and calculating total cost.',
+    marathiNote: 'प्रवाशांची संख्या * तिकिटाची किंमत = एकूण रक्कम हिशोब केला जातो.',
     filename: 'air_ticket_reservation.php',
     code: `<!DOCTYPE html>
 <html>
 <head>
     <title>Air Ticket Reservation</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .ticket { border: 2px solid #333; padding: 20px; width: 450px; background: #f9f9f9; }
+        .header { text-align: center; color: #1e3a8a; }
+    </style>
 </head>
 <body>
     <h2>Air Ticket Reservation Form</h2>
     <form method="post" action="">
         Passenger Name: <input type="text" name="name" required><br><br>
         Gender: 
-        <input type="radio" name="gender" value="Male" required> Male
-        <input type="radio" name="gender" value="Female"> Female
-        <input type="radio" name="gender" value="Other"> Other<br><br>
+        <input type="radio" name="gender" value="Male" checked> Male
+        <input type="radio" name="gender" value="Female"> Female<br><br>
         Contact No: <input type="text" name="contact" required><br><br>
         Address: <textarea name="address" required></textarea><br><br>
-        Source City: <input type="text" name="source" required><br><br>
-        Destination City: <input type="text" name="destination" required><br><br>
+        Source: <input type="text" name="source" required><br><br>
+        Destination: <input type="text" name="destination" required><br><br>
         Date of Journey: <input type="date" name="doj" required><br><br>
-        Number of Persons: <input type="number" min="1" name="persons" required><br><br>
+        No. of Passengers: <input type="number" min="1" name="persons" value="1" required><br><br>
         Price per Ticket (₹): <input type="number" step="any" name="price" required><br><br>
-        <input type="submit" name="submit" value="Book Tickets">
+
+        <input type="submit" name="submit" value="Book Ticket">
     </form>
 
     <?php
     if (isset($_POST['submit'])) {
-        $name = htmlspecialchars($_POST['name']);
-        $gender = htmlspecialchars($_POST['gender']);
-        $contact = htmlspecialchars($_POST['contact']);
-        $address = htmlspecialchars($_POST['address']);
-        $source = htmlspecialchars($_POST['source']);
-        $destination = htmlspecialchars($_POST['destination']);
-        $doj = htmlspecialchars($_POST['doj']);
+        $name = $_POST['name'];
+        $gender = $_POST['gender'];
+        $contact = $_POST['contact'];
+        $address = $_POST['address'];
+        $source = $_POST['source'];
+        $destination = $_POST['destination'];
+        $doj = $_POST['doj'];
         $persons = (int)$_POST['persons'];
         $price = (float)$_POST['price'];
 
         $total_cost = $persons * $price;
 
+        echo "<br><div class='ticket'>";
+        echo "<h2 class='header'>✈️ AIR TICKET RESERVATION RECEIPT</h2>";
         echo "<hr>";
-        echo "<h2>--- Booking Summary ---</h2>";
-        echo "<b>Name:</b> " . $name . "<br>";
-        echo "<b>Gender:</b> " . $gender . "<br>";
-        echo "<b>Contact:</b> " . $contact . "<br>";
-        echo "<b>Address:</b> " . $address . "<br>";
-        echo "<b>Route:</b> " . $source . " to " . $destination . "<br>";
-        echo "<b>Date of Journey:</b> " . $doj . "<br>";
-        echo "<b>Passengers:</b> " . $persons . "<br>";
-        echo "<b>Price Per Ticket:</b> ₹" . number_format($price, 2) . "<br>";
-        echo "<h3><b>Total Amount: ₹" . number_format($total_cost, 2) . "</b></h3>";
+        echo "<p><strong>Passenger Name:</strong> $name</p>";
+        echo "<p><strong>Gender:</strong> $gender | <strong>Contact:</strong> $contact</p>";
+        echo "<p><strong>Address:</strong> $address</p>";
+        echo "<p><strong>Route:</strong> $source ➔ $destination</p>";
+        echo "<p><strong>Date of Journey:</strong> $doj</p>";
+        echo "<p><strong>Passengers:</strong> $persons person(s)</p>";
+        echo "<p><strong>Rate Per Ticket:</strong> ₹" . number_format($price, 2) . "</p>";
+        echo "<hr>";
+        echo "<h3 style='color:green;'>Total Amount Payable: ₹" . number_format($total_cost, 2) . "</h3>";
+        echo "</div>";
     }
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'Processes full HTML form with text, radio, textarea, date, and numbers. Sanitizes text with `htmlspecialchars()`.',
-      mr: 'तिकीट बुकिंगच्या माहितीसाठी विविध HTML एलिमेंट्स वापरून `htmlspecialchars()` द्वारे डेटा सुरक्षितपणे दाखवला आहे.'
+      en: 'Extracts HTML form variables, calculates total ticket cost ($persons * $price), and formats an HTML ticket card.',
+      mr: 'फॉर्म मधून माहिती घेऊन एकूण प्रवास खर्च ($persons * $price) गुणून सुंदर तिकीट पावती (Receipt) जनरेट केली आहे.'
     },
     keyTakeaways: [
-      'Sanitize string inputs using `htmlspecialchars()`.',
-      'Format output values with `number_format($val, 2)`.'
+      'Multi-input HTML form processing with text, radio, textarea, date, and number fields.'
     ],
     inputFields: [
       { name: 'name', label: 'Passenger Name', type: 'text', defaultValue: 'John Doe', required: true },
-      {
-        name: 'gender',
-        label: 'Gender',
-        type: 'select',
-        defaultValue: 'Male',
-        options: [
-          { label: 'Male', value: 'Male' },
-          { label: 'Female', value: 'Female' },
-          { label: 'Other', value: 'Other' }
-        ],
-        required: true
-      },
-      { name: 'contact', label: 'Contact No', type: 'text', defaultValue: '+91 9876543210', required: true },
-      { name: 'address', label: 'Address', type: 'textarea', defaultValue: '123 Main St, Pune', required: true },
-      { name: 'source', label: 'Source City', type: 'text', defaultValue: 'Mumbai (BOM)', required: true },
-      { name: 'destination', label: 'Destination City', type: 'text', defaultValue: 'Delhi (DEL)', required: true },
+      { name: 'contact', label: 'Contact Number', type: 'text', defaultValue: '+91 9876543210', required: true },
+      { name: 'source', label: 'Source City', type: 'text', defaultValue: 'Mumbai', required: true },
+      { name: 'destination', label: 'Destination City', type: 'text', defaultValue: 'Delhi', required: true },
       { name: 'doj', label: 'Date of Journey', type: 'date', defaultValue: '2026-10-15', required: true },
-      { name: 'persons', label: 'Number of Persons', type: 'number', min: 1, defaultValue: 3, required: true },
-      { name: 'price', label: 'Price Per Ticket (₹)', type: 'number', step: 'any', defaultValue: 2500, required: true }
+      { name: 'persons', label: 'No. of Passengers', type: 'number', defaultValue: 2, min: 1, required: true },
+      { name: 'price', label: 'Price Per Ticket (₹)', type: 'number', defaultValue: 3500, required: true }
     ]
   },
   {
     id: 'php-setc-2',
-    title: 'Display Number in Words using Switch Case',
-    marathiTitle: 'संख्या शब्दांमध्ये (Words) रूपांतरित करणे (उदा. 345 => three four five)',
+    title: 'Convert Number to Words',
+    marathiTitle: 'संख्या शब्दांमध्ये (Number to Words) रुपांतरित करणे',
+    questionStatement: 'Q. Write a PHP script to accept a number from the user and convert each of its digits into corresponding words (e.g., 512 -> Five One Two).',
+    marathiQuestionStatement: 'प्रश्न: युजरकडून कोणतीही संख्या स्वीकारून तिच्या प्रत्येक अंकाचे शब्दांमध्ये (उदा. ५१२ -> Five One Two) भाषांतर करणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET C',
-    description: 'Reads digit string and converts each digit into word (zero, one, two...) using switch case.',
-    filename: 'number_in_words.php',
+    description: 'Converts a given integer number into individual words (e.g. 512 -> Five One Two) using array or switch mapping.',
+    marathiNote: 'प्रत्येक अंकाचे (0-9) इंग्रजी शब्दांशी मॅपिंग असोसिएशन वापरून केले आहे.',
+    filename: 'number_to_words.php',
     code: `<!DOCTYPE html>
 <html>
-<head><title>Number in Words</title></head>
+<head>
+    <title>Number to Words</title>
+</head>
 <body>
-    <h2>Convert Number to Words</h2>
+    <h2>Convert Digits to Words</h2>
     <form method="post" action="">
-        Enter a Number: <input type="number" name="num" required><br><br>
-        <input type="submit" name="submit" value="Convert">
+        Enter Number: <input type="number" name="num" required><br><br>
+        <input type="submit" name="submit" value="Convert to Words">
     </form>
 
     <?php
     if (isset($_POST['submit'])) {
         $num = $_POST['num'];
-        $len = strlen($num);
+        $numStr = (string)$num;
 
-        echo "<h3>Output: ";
-        for ($i = 0; $i < $len; $i++) {
-            $digit = $num[$i];
-            switch ($digit) {
-                case '0': echo "zero "; break;
-                case '1': echo "one "; break;
-                case '2': echo "two "; break;
-                case '3': echo "three "; break;
-                case '4': echo "four "; break;
-                case '5': echo "five "; break;
-                case '6': echo "six "; break;
-                case '7': echo "seven "; break;
-                case '8': echo "eight "; break;
-                case '9': echo "nine "; break;
+        $wordsMap = array(
+            '0' => 'Zero', '1' => 'One', '2' => 'Two', '3' => 'Three', '4' => 'Four',
+            '5' => 'Five', '6' => 'Six', '7' => 'Seven', '8' => 'Eight', '9' => 'Nine'
+        );
+
+        echo "<h3>Original Number: $num</h3>";
+        echo "<h3>In Words: <span style='color:blue;'>";
+
+        for ($i = 0; $i < strlen($numStr); $i++) {
+            $digit = $numStr[$i];
+            if (isset($wordsMap[$digit])) {
+                echo $wordsMap[$digit] . " ";
             }
         }
-        echo "</h3>";
+
+        echo "</span></h3>";
     }
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'Loops over character string array representation of the number and uses switch case for word mapping.',
-      mr: 'संख्येची स्ट्रिंग बनवून प्रत्येक अंकासाठी switch-case द्वारे इंग्रजी शब्द (zero to nine) प्रिंट केला जातो.'
+      en: 'Casts number to string, loops characters, and uses array lookup for digit word translation.',
+      mr: 'संख्येचे स्ट्रिंग मध्ये रूपांतर करून प्रत्येक अंकाची तुलना `array` मधील इंग्रजी शब्दांशी करून प्रिंट केले आहे.'
     },
     keyTakeaways: [
-      'Access string digits using `$num[$i]` index.'
+      'String character array indexing $numStr[$i].',
+      'Associative array map digit -> word string.'
     ],
     inputFields: [
-      { name: 'num', label: 'Enter a Number', type: 'number', defaultValue: 345, required: true }
+      { name: 'num', label: 'Enter Number', type: 'number', defaultValue: 512, required: true }
     ]
   },
   {
     id: 'php-setc-3',
-    title: 'Dynamic Background Color by Day of Week',
-    marathiTitle: 'वॉरानुसार (Day of Week) वेबपेजचा बॅकग्राऊंड कलर बदलणे',
+    title: 'Dynamic Web Page Background Color by Day',
+    marathiTitle: 'दिवसानुसार (Day of Week) वेब पेजचा बॅकग्राऊंड रंग बदलणे',
+    questionStatement: 'Q. Write a PHP script to get the current day of the week (e.g., Monday, Tuesday) and automatically change the background color of the web page dynamically based on the day.',
+    marathiQuestionStatement: 'प्रश्न: आजचा दिवस (Day of Week) शोधून काढणाऱ्या आणि त्या गुणधर्मानुसार वेब पेजचा बॅकग्राऊंड कलर (Background Color) आपोआप बदलणाऱ्या PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET C',
-    description: 'Determines current day using `date("l")` and sets HTML body background color using switch case.',
-    filename: 'bg_color_day.php',
+    description: 'Gets current day name using date("l") and sets inline dynamic background-color CSS based on day of week.',
+    marathiNote: '`date("l")` आजचा वार शोधते (उदा. Monday) आणि त्यानुसार CSS बदलली जाते.',
+    filename: 'dynamic_bg_day.php',
     code: `<?php
-$day = date("l"); // Current day name (e.g. Monday, Tuesday)
-$bgcolor = "white";
+$day = date("l"); // Full day name (e.g. Monday)
 
-switch ($day) {
-    case "Monday":    $bgcolor = "#ffcccc"; break; // Light Red
-    case "Tuesday":   $bgcolor = "#ffffcc"; break; // Light Yellow
-    case "Wednesday": $bgcolor = "#ccffcc"; break; // Light Green
-    case "Thursday":  $bgcolor = "#ccffff"; break; // Light Cyan
-    case "Friday":    $bgcolor = "#e6ccff"; break; // Light Purple
-    case "Saturday":  $bgcolor = "#ffe6cc"; break; // Light Orange
-    case "Sunday":    $bgcolor = "#d9d9d9"; break; // Light Gray
-}
+$bgColors = array(
+    "Monday"    => "#fca5a5", // Soft Red
+    "Tuesday"   => "#fef08a", // Soft Yellow
+    "Wednesday" => "#86efac", // Soft Green
+    "Thursday"  => "#7dd3fc", // Soft Blue
+    "Friday"    => "#c084fc", // Soft Purple
+    "Saturday"  => "#fdba74", // Soft Orange
+    "Sunday"    => "#cbd5e1"  // Soft Gray
+);
+
+$currentColor = isset($bgColors[$day]) ? $bgColors[$day] : "#ffffff";
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Change Background Color</title>
+    <title>Dynamic Day Background Color</title>
 </head>
-<body style="background-color: <?php echo $bgcolor; ?>;">
-    <h2>Today is: <?php echo $day; ?></h2>
-    <p>The background color is automatically set for <?php echo $day; ?>.</p>
+<body style="background-color: <?php echo $currentColor; ?>; font-family: Arial; padding: 40px;">
+    <h2>Dynamic Background Color by Day</h2>
+    <h3>Today is: <span style="color:#1e3a8a;"><?php echo $day; ?></span></h3>
+    <p>The background color is automatically set to <strong><?php echo $currentColor; ?></strong> for <?php echo $day; ?>.</p>
 </body>
 </html>`,
     explanation: {
-      en: 'Fetches `date("l")` full day name and injects color string into CSS `style="background-color: ..."` attribute.',
-      mr: 'आज कोणता वार आहे त्यानुसार `switch` द्वारे रंग ठरवून `<body style="background-color: ...">` मध्ये सेट केला आहे.'
+      en: 'Fetches server day using date("l") and injects corresponding color hex code into <body> inline CSS style.',
+      mr: '`date("l")` द्वारे वार शोधून <body> च्या CSS `background-color` मध्ये डायनॅमिक रंग भरला जातो.'
     },
     keyTakeaways: [
-      'Get full day string: `date("l")`.'
-    ],
-    inputFields: []
+      'date("l") gives full textual representation of day of the week.',
+      'Inline CSS injection via PHP string interpolation.'
+    ]
   },
   {
     id: 'php-setc-4',
-    title: 'Count Total Even and Odd Numbers (1 to 1000)',
-    marathiTitle: '१ ते १००० मधील सम (Even) आणि विषम (Odd) संख्यांची संख्या',
+    title: 'Even and Odd Numbers Counter (1 to 1000)',
+    marathiTitle: '१ ते १००० मधील सम (Even) आणि विषम (Odd) संख्या मोजणे',
+    questionStatement: 'Q. Write a PHP script to count and display the total number of Even and Odd integers between 1 and 1000 using a loop and modulo 2 condition.',
+    marathiQuestionStatement: 'प्रश्न: १ ते १००० या संख्यांच्या दरम्यान असणाऱ्या एकूण सम संख्या (Even Numbers) आणि विषम संख्या (Odd Numbers) मोजणारी PHP स्क्रिप्ट लिहा.',
     subject: 'php',
     set: 'SET C',
-    description: 'Iterates from 1 to 1000 and counts even numbers ($i % 2 == 0) and odd numbers.',
-    filename: 'even_odd_count.php',
+    description: 'Counts total number of even numbers ($i % 2 == 0) and odd numbers between range 1 to 1000.',
+    marathiNote: 'Modulo 2 वापरून संख्या सम आहे की विषम हे शोधून काउंटर वाढवला जातो.',
+    filename: 'even_odd_counter.php',
     code: `<!DOCTYPE html>
 <html>
-<head><title>Even and Odd Count</title></head>
+<head>
+    <title>Even & Odd Counter</title>
+</head>
 <body>
-    <h2>Count of Even & Odd Numbers (1 to 1000)</h2>
+    <h2>Even and Odd Numbers Counter (1 to 1000)</h2>
+
     <?php
     $even_count = 0;
     $odd_count = 0;
@@ -981,127 +1070,149 @@ switch ($day) {
         }
     }
 
-    echo "<h3>Total Even Numbers between 1 to 1000: <b>$even_count</b></h3>";
-    echo "<h3>Total Odd Numbers between 1 to 1000: <b>$odd_count</b></h3>";
+    echo "<h3>--- Analysis Result ---</h3>";
+    echo "<p style='color:blue;'>Total Even Numbers: <strong>$even_count</strong></p>";
+    echo "<p style='color:red;'>Total Odd Numbers: <strong>$odd_count</strong></p>";
     ?>
 </body>
 </html>`,
     explanation: {
-      en: 'Loops 1000 times, incrementing $even_count or $odd_count based on modulo 2 test.',
-      mr: '१ ते १००० मधील सम (५००) आणि विषम (५००) संख्यांची मोजणी केली जाते.'
+      en: 'Loops from 1 to 1000 and increments $even_count if $i % 2 == 0, else increments $odd_count.',
+      mr: '१ ते १००० लूप चालवून % २ ने भाग गेल्यास सम आणि न गेल्यास विषम काउंटर १ ने वाढवला जातो.'
     },
     keyTakeaways: [
-      'Even condition: `$i % 2 == 0`.'
-    ],
-    inputFields: []
+      'Simple counter loop pattern.',
+      'Modulo 2 division classifies even vs odd numbers.'
+    ]
   },
   {
     id: 'php-setc-5',
-    title: 'String Operations (Compare, Uppercase, Lowercase)',
-    marathiTitle: 'स्ट्रिंग ऑपरेशन्स (तुलना, अप्परकेस, लोअरकेस)',
+    title: 'String Comparison & Case Conversion',
+    marathiTitle: 'स्ट्रिंग तुलना (Compare) आणि अप्परकेस/लोअरकेस केस रुपांतर',
+    questionStatement: 'Q. Write a PHP script to perform string operations: i) Compare two strings using strcmp() ii) Convert a string to Uppercase using strtoupper() iii) Convert a string to Lowercase using strtolower().',
+    marathiQuestionStatement: 'प्रश्न: स्ट्रिंगवरील प्रक्रिया पार पाडणारी PHP स्क्रिप्ट लिहा: १) strcmp() द्वारे दोन स्ट्रिंगची तुलना करणे २) strtoupper() द्वारे अप्परकेस करणे ३) strtolower() द्वारे लोअरकेस करणे.',
     subject: 'php',
     set: 'SET C',
-    description: 'Compares strings with `strcmp()` and converts strings to uppercase (`strtoupper`) and lowercase (`strtolower`).',
-    filename: 'string_basic_ops.php',
-    code: `<?php
-$str1 = "Hello World";
-$str2 = "Apple";
-$str3 = "Banana";
+    description: 'Demonstrates PHP string functions: i) Compare two strings using strcmp() ii) Convert to Uppercase (strtoupper) iii) Convert to Lowercase (strtolower).',
+    marathiNote: '`strcmp()`, `strtoupper()` आणि `strtolower()` या इनबिल्ट फंक्शन्सचा वापर केला आहे.',
+    filename: 'string_case_compare.php',
+    code: `<!DOCTYPE html>
+<html>
+<head>
+    <title>String Case & Comparison</title>
+</head>
+<body>
+    <h2>String Operations</h2>
 
-echo "String 1: $str1 <br>";
-echo "String 2: $str2 <br>";
-echo "String 3: $str3 <br><hr>";
+    <?php
+    $str1 = "Hello World";
+    $str2 = "Apple";
+    $str3 = "Banana";
 
-// i) Compare string2 with string3
-$cmp = strcmp($str2, $str3);
-echo "<h3>i) Compare '$str2' with '$str3':</h3>";
-if ($cmp == 0) {
-    echo "Both strings are equal.";
-} elseif ($cmp < 0) {
-    echo "'$str2' is smaller than '$str3'";
-} else {
-    echo "'$str2' is greater than '$str3'";
-}
+    // i) Compare two strings
+    $cmp = strcmp($str2, $str3);
+    echo "<h3>i) String Comparison ('$str2' vs '$str3'):</h3>";
+    if ($cmp == 0) {
+        echo "Both strings are equal.<br>";
+    } elseif ($cmp < 0) {
+        echo "'$str2' is smaller than '$str3'<br>";
+    } else {
+        echo "'$str2' is greater than '$str3'<br>";
+    }
 
-// ii) Convert all strings to Uppercase
-echo "<h3>ii) Uppercase:</h3>";
-echo strtoupper($str1) . "<br>";
-echo strtoupper($str2) . "<br>";
-echo strtoupper($str3) . "<br>";
+    // ii) Convert to Uppercase
+    echo "<h3>ii) Convert to Uppercase:</h3>";
+    echo strtoupper($str1) . "<br>";
 
-// iii) Convert all strings to Lowercase
-echo "<h3>iii) Lowercase:</h3>";
-echo strtolower($str1) . "<br>";
-echo strtolower($str2) . "<br>";
-echo strtolower($str3) . "<br>";
-?>`,
+    // iii) Convert to Lowercase
+    echo "<h3>iii) Convert to Lowercase:</h3>";
+    echo strtolower($str1) . "<br>";
+    ?>
+</body>
+</html>`,
     explanation: {
-      en: 'Highlights built-in string functions `strcmp()`, `strtoupper()`, and `strtolower()`.',
-      mr: 'स्ट्रिंगची तुलना व केसमधील बदल करण्यासाठी `strcmp()`, `strtoupper()`, `strtolower()` फंक्शन वापरले जातात.'
+      en: 'Uses PHP string built-in utilities strcmp(), strtoupper(), and strtolower().',
+      mr: 'स्ट्रिंग तुलना आणि अक्षर केस बदलण्यासाठी PHP च्या इनबिल्ट स्ट्रिंग फंक्शन्सचा वापर केला आहे.'
     },
     keyTakeaways: [
-      '`strcmp($a, $b)` returns <0 if $a < $b, 0 if equal, >0 if $a > $b.'
-    ],
-    inputFields: []
+      'strcmp() returns 0 if equal, <0 if string1 < string2, >0 if string1 > string2.',
+      'strtoupper() and strtolower() transform character case.'
+    ]
   },
   {
     id: 'php-setc-6',
-    title: 'String Word Case & Occurrences',
-    marathiTitle: 'स्ट्रिंगचे शब्द कॅपिटल करणे आणि स्थान शोधणे',
+    title: 'Word Case Conversions & Occurrence Search',
+    marathiTitle: 'टायटल केस (Title Case) आणि पहिल्या/शेवटच्या शब्दाचे स्थान शोधणे',
+    questionStatement: 'Q. Write a PHP script to perform string operations: i) Convert words in a string to Title Case (ucwords), Uppercase, and Lowercase ii) Find the first and last occurrence index of a word in a sentence using strpos() and strrpos().',
+    marathiQuestionStatement: 'प्रश्न: स्ट्रिंगवरील क्रिया करणारी PHP स्क्रिप्ट लिहा: १) ucwords() ने शब्दांचे पहिले अक्षर मोठे करणे २) strpos() आणि strrpos() द्वारे वाक्यातील विशिष्ट शब्दाचे पहिले आणि शेवटचे स्थान (Occurrence Index) शोधणे.',
     subject: 'php',
     set: 'SET C',
-    description: 'Converts title case with `ucwords()` and finds first/last substring occurrences using `strpos()` & `strrpos()`.',
-    filename: 'string_occurrences.php',
-    code: `<?php
-$str1 = "php is a popular scripting language. php is easy.";
-$str2 = "php";
+    description: 'String operations: i) Convert words to Title Case (ucwords), Uppercase, Lowercase ii) Find first and last occurrence index of a word using strpos() and strrpos().',
+    marathiNote: '`ucwords()` सर्व शब्दांचे पहिले अक्षर कॅपिटल करते; `strpos()` पहिली जागा तर `strrpos()` शेवटची जागा सांगते.',
+    filename: 'word_search_case.php',
+    code: `<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Case & Occurrence</title>
+</head>
+<body>
+    <h2>String Operations</h2>
 
-echo "String 1: <b>$str1</b> <br>";
-echo "String 2 to search: <b>$str2</b> <br><hr>";
+    <?php
+    $text = "php is a popular scripting language. php is easy.";
+    $search = "php";
 
-// i) Convert each word of a string
-echo "<h3>i) Word Conversions:</h3>";
-echo "Title Case (Each Word Capital): " . ucwords($str1) . "<br>";
-echo "All Upper: " . strtoupper($str1) . "<br>";
-echo "All Lower: " . strtolower($str1) . "<br>";
+    // i) Word Case Conversions
+    echo "<h3>i) Word Case Conversions:</h3>";
+    echo "Original: <i>$text</i><br>";
+    echo "Title Case (ucwords): <strong>" . ucwords($text) . "</strong><br>";
+    echo "Uppercase (strtoupper): <strong>" . strtoupper($text) . "</strong><br>";
+    echo "Lowercase (strtolower): <strong>" . strtolower($text) . "</strong><br>";
 
-// ii) First and Last occurrence of string2 in string1
-$first_pos = strpos($str1, $str2);
-$last_pos  = strrpos($str1, $str2);
+    // ii) First and Last Occurrence
+    $first_pos = strpos($text, $search);
+    $last_pos = strrpos($text, $search);
 
-echo "<h3>ii) Occurrences:</h3>";
-echo "First occurrence of '$str2' is at index: <b>$first_pos</b> <br>";
-echo "Last occurrence of '$str2' is at index: <b>$last_pos</b> <br>";
-?>`,
+    echo "<h3>ii) Occurrences of word '$search':</h3>";
+    echo "First Occurrence Index: <strong>$first_pos</strong><br>";
+    echo "Last Occurrence Index: <strong>$last_pos</strong><br>";
+    ?>
+</body>
+</html>`,
     explanation: {
-      en: '`ucwords()` capitalizes first character of each word; `strpos()` gets first index and `strrpos()` finds last index.',
-      mr: '`ucwords()` मुळे प्रत्येक शब्दाचे पहिले अक्षर मोठे होते; `strpos()` व `strrpos()` मुळे शब्दाचे पहिले आणि शेवटचे स्थान (Index) मिळते.'
+      en: 'Demonstrates ucwords() for Title Case formatting, strpos() for first substring match index, and strrpos() for last index match.',
+      mr: '`ucwords()` टायटल केससाठी, `strpos()` पहिल्या मॅचसाठी आणि `strrpos()` शेवटच्या मॅचच्या स्थानासाठी वापरले आहे.'
     },
     keyTakeaways: [
-      '`ucwords()` capitalizes every word.',
-      '`strpos()` = first occurrence, `strrpos()` = last occurrence.'
-    ],
-    inputFields: []
+      'ucwords() capitalizes the first character of each word in a string.',
+      'strpos() searches from start, strrpos() searches from end.'
+    ]
   },
   {
     id: 'php-setc-7',
-    title: 'Menu-driven program for Associative Arrays',
-    marathiTitle: 'असोसिएटिव्ह अरे मेन्यू ड्राईव्हन प्रोग्राम (Sorting, Intersection & Union)',
+    title: 'Associative Array Menu-Driven Sorting & Set Operations',
+    marathiTitle: 'मेनू-ड्रिव्हन असोसिएटिव्ह अरे सॉर्टिंग, इंटरसेक्शन आणि युनियन',
+    questionStatement: 'Q. Write a menu-driven PHP script to perform operations on associative arrays: 1) Sort by values in Ascending/Descending order without preserving keys (sort/rsort) 2) Sort by values preserving keys (asort/arsort) 3) Find Intersection of two arrays (array_intersect) 4) Find Union of two arrays.',
+    marathiQuestionStatement: 'प्रश्न: असोसिएटिव्ह अरेसाठी मेनू-ड्रिव्हन PHP स्क्रिप्ट लिहा: १) की न जपता मूल्यांनुसार सॉर्ट करणे (sort/rsort) २) की जपून मूल्यांनुसार सॉर्ट करणे (asort/arsort) ३) दोन अरेचा इंटरसेक्शन (array_intersect) शोधणे ४) युनियन (Union) शोधणे.',
     subject: 'php',
     set: 'SET C',
-    description: 'Radio button menu for sorting by value (with/without key change), array intersection (`array_intersect`), and array union (`+`).',
-    filename: 'associative_menu_driven.php',
+    description: 'Menu-driven PHP script for associative arrays: 1) Sort by values ascending/descending without preserving keys (sort/rsort) 2) Sort preserving keys (asort/arsort) 3) Array Intersection (array_intersect) 4) Array Union.',
+    marathiNote: 'सॉर्टिंग फंक्शन्स: sort (की रिसेट होते), asort (की जपली जाते), array_intersect (सामायिक घटक).',
+    filename: 'array_menu_operations.php',
     code: `<!DOCTYPE html>
 <html>
-<head><title>Associative Array Menu</title></head>
+<head>
+    <title>Associative Array Menu Operations</title>
+</head>
 <body>
-    <h2>Menu Driven Program on Associative Arrays</h2>
+    <h2>Menu-Driven Associative Array Operations</h2>
     <form method="post" action="">
-        <label><b>Choose Operation:</b></label><br>
-        <input type="radio" name="choice" value="1" required> 1. Sort by values (Change keys - Asc/Desc)<br>
-        <input type="radio" name="choice" value="2"> 2. Sort by values (Without changing keys - Asc/Desc)<br>
-        <input type="radio" name="choice" value="3"> 3. Intersection of two arrays<br>
+        <label>Select Operation:</label><br>
+        <input type="radio" name="choice" value="1" checked> 1. Sort by values (without preserving keys)<br>
+        <input type="radio" name="choice" value="2"> 2. Sort by values (preserving keys - asort/arsort)<br>
+        <input type="radio" name="choice" value="3"> 3. Intersection of two arrays (array_intersect)<br>
         <input type="radio" name="choice" value="4"> 4. Union of two arrays<br><br>
+
         <input type="submit" name="submit" value="Perform Operation">
     </form>
 
@@ -1112,42 +1223,35 @@ echo "Last occurrence of '$str2' is at index: <b>$last_pos</b> <br>";
         $arr1 = array("a" => 30, "b" => 10, "c" => 50, "d" => 20);
         $arr2 = array("c" => 50, "d" => 20, "e" => 70);
 
-        echo "<hr><h3>Result:</h3>";
+        echo "<h3>Original Array 1:</h3><pre>"; print_r($arr1); echo "</pre>";
+
         switch ($ch) {
-            case '1':
-                $asc = $arr1;
-                sort($asc); // Re-indexes keys to 0, 1, 2...
-                echo "<b>Ascending (Keys Changed):</b><br>";
-                print_r($asc);
-
-                $desc = $arr1;
-                rsort($desc);
-                echo "<br><br><b>Descending (Keys Changed):</b><br>";
-                print_r($desc);
+            case "1":
+                $temp1 = $arr1;
+                sort($temp1);
+                echo "<h3>Values Ascending (sort - keys reset):</h3><pre>"; print_r($temp1); echo "</pre>";
+                $temp2 = $arr1;
+                rsort($temp2);
+                echo "<h3>Values Descending (rsort - keys reset):</h3><pre>"; print_r($temp2); echo "</pre>";
                 break;
 
-            case '2':
-                $asc = $arr1;
-                asort($asc); // Preserves keys
-                echo "<b>Ascending (Without changing keys):</b><br>";
-                print_r($asc);
-
-                $desc = $arr1;
-                arsort($desc);
-                echo "<br><br><b>Descending (Without changing keys):</b><br>";
-                print_r($desc);
+            case "2":
+                $temp1 = $arr1;
+                asort($temp1);
+                echo "<h3>Values Ascending (asort - keys preserved):</h3><pre>"; print_r($temp1); echo "</pre>";
+                $temp2 = $arr1;
+                arsort($temp2);
+                echo "<h3>Values Descending (arsort - keys preserved):</h3><pre>"; print_r($temp2); echo "</pre>";
                 break;
 
-            case '3':
-                echo "<b>Intersection of Array 1 and Array 2:</b><br>";
-                $intersection = array_intersect($arr1, $arr2);
-                print_r($intersection);
+            case "3":
+                $intersect = array_intersect($arr1, $arr2);
+                echo "<h3>Intersection of Array 1 and Array 2:</h3><pre>"; print_r($intersect); echo "</pre>";
                 break;
 
-            case '4':
-                echo "<b>Union of Array 1 and Array 2:</b><br>";
-                $union = $arr1 + $arr2; // Union for associative array
-                print_r($union);
+            case "4":
+                $union = $arr1 + $arr2; // Array union operator
+                echo "<h3>Union of Array 1 and Array 2:</h3><pre>"; print_r($union); echo "</pre>";
                 break;
         }
     }
@@ -1155,64 +1259,75 @@ echo "Last occurrence of '$str2' is at index: <b>$last_pos</b> <br>";
 </body>
 </html>`,
     explanation: {
-      en: 'Demonstrates `sort()` / `rsort()` (resets keys) vs `asort()` / `arsort()` (preserves keys), `array_intersect()`, and union operator `+`.',
-      mr: '`sort()` की बदलते, तर `asort()` की जशीच्या तशी ठेवून व्हॅल्यू सॉर्ट करते.'
+      en: 'Highlights PHP associative array sorting differences: sort() reindexes keys numerically, asort() maintains key-value pairs, array_intersect() finds shared values, and + operator merges unique keys.',
+      mr: '`sort()` की रिसेट करतो, `asort()` की-व्हॅल्यू जोडी जपतो, `array_intersect()` दोन्हीतील समान घटक शोधतो.'
     },
     keyTakeaways: [
-      '`asort()` keeps associative keys.',
-      '`array_intersect()` finds common elements.'
+      'sort() vs asort(): asort preserves key associations.',
+      'array_intersect() matches identical values across arrays.',
+      'Array union + operator preserves left array keys.'
     ],
     inputFields: [
       {
         name: 'choice',
-        label: 'Choose Operation',
+        label: 'Select Operation',
         type: 'select',
         defaultValue: '1',
         options: [
-          { label: '1. Sort by values (Change keys)', value: '1' },
-          { label: '2. Sort by values (Keep keys - asort)', value: '2' },
-          { label: '3. Intersection of arrays', value: '3' },
-          { label: '4. Union of arrays', value: '4' }
-        ],
-        required: true
+          { label: '1. Sort values (Keys reset - sort/rsort)', value: '1' },
+          { label: '2. Sort values (Keys preserved - asort/arsort)', value: '2' },
+          { label: '3. Intersection of Arrays (array_intersect)', value: '3' },
+          { label: '4. Union of Arrays', value: '4' }
+        ]
       }
     ]
   },
   {
     id: 'php-setc-8',
-    title: 'String Replace and String Reverse',
-    marathiTitle: 'स्ट्रिंग मधील शब्द बदलणे (Replace) आणि उलट करणे (Reverse)',
+    title: 'String Word Replacement and Reversal',
+    marathiTitle: 'स्ट्रिंगमधील शब्द बदलणे (Replace) आणि स्ट्रिंग उलट (Reverse) करणे',
+    questionStatement: 'Q. Write a PHP script to perform string operations: i) Replace all occurrences of a word in a sentence with another word using str_replace() ii) Reverse a given string using strrev().',
+    marathiQuestionStatement: 'प्रश्न: स्ट्रिंगवरील क्रिया करणारी PHP स्क्रिप्ट लिहा: १) str_replace() चा वापर करून वाक्यातील ठराविक शब्द दुसऱ्या शब्दाने बदलणे २) strrev() चा वापर करून पूर्ण स्ट्रिंग उलट (Reverse) करणे.',
     subject: 'php',
     set: 'SET C',
-    description: 'Replaces target substring with new substring using `str_replace()` and reverses whole string using `strrev()`.',
+    description: 'String operations: i) Replace a word in a string with another word using str_replace() ii) Reverse a given string using strrev().',
+    marathiNote: '`str_replace("शोधायचा शब्द", "नवीन शब्द", $वाक्य)` आणि `strrev()` वापरा.',
     filename: 'string_replace_reverse.php',
-    code: `<?php
-$str1 = "Welcome to Java programming. Java is powerful.";
-$str2 = "Java";
-$str3 = "PHP";
+    code: `<!DOCTYPE html>
+<html>
+<head>
+    <title>String Replace & Reverse</title>
+</head>
+<body>
+    <h2>String Operations</h2>
 
-echo "Original String 1: <b>$str1</b> <br>";
-echo "String to Replace (str2): <b>$str2</b> <br>";
-echo "Replacement String (str3): <b>$str3</b> <br><hr>";
+    <?php
+    $text = "Welcome to Java programming. Java is powerful.";
+    $search = "Java";
+    $replace = "PHP";
 
-// i) Replace string2 by string3 in string1
-$replaced_str = str_replace($str2, $str3, $str1);
-echo "<h3>i) After Replace:</h3>";
-echo $replaced_str . "<br>";
+    echo "<h3>Original String:</h3>";
+    echo "<i>$text</i><br>";
 
-// ii) Reverse and display the string
-$reversed_str = strrev($str1);
-echo "<h3>ii) Reversed String:</h3>";
-echo $reversed_str . "<br>";
-?>`,
+    // i) Replace a word in a string
+    $new_text = str_replace($search, $replace, $text);
+    echo "<h3>i) After Word Replacement ('$search' ➔ '$replace'):</h3>";
+    echo "<strong>$new_text</strong><br>";
+
+    // ii) Reverse a given string
+    $reversed = strrev($text);
+    echo "<h3>ii) Reversed String (strrev):</h3>";
+    echo "<strong>$reversed</strong><br>";
+    ?>
+</body>
+</html>`,
     explanation: {
-      en: 'Replaces all occurrences of `$str2` with `$str3` in `$str1` using `str_replace()` and reverses using `strrev()`.',
-      mr: '`str_replace()` मुळे विशिष्ट शब्द बदलला जातो आणि `strrev()` मुळे संपूर्ण वाक्य उलट अक्षरांमध्ये छापले जाते.'
+      en: 'Uses str_replace($search, $replace, $subject) for string replacement and strrev() for string reversal.',
+      mr: '`str_replace()` ने शब्द बदलला जातो आणि `strrev()` ने संपूर्ण स्ट्रिंग उलटी केली जाते.'
     },
     keyTakeaways: [
-      'Replace syntax: `str_replace(search, replace, subject)`',
-      'Reverse syntax: `strrev(string)`'
-    ],
-    inputFields: []
+      'str_replace() is case-sensitive string replacement.',
+      'strrev() reverses string characters in O(N).'
+    ]
   }
 ];

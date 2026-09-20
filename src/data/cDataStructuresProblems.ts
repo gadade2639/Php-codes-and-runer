@@ -6,6 +6,8 @@ export const cDataStructuresProblems: Problem[] = [
     id: 'cds-seta-1',
     title: 'Count Frequency of Element in Sorted Array',
     marathiTitle: 'शॉर्टेड अरेमध्ये विशिष्ट घटकाची वारंवारता (Count) मोजणे',
+    questionStatement: 'Q. Write a C program to accept a sorted array of N integers and count the frequency (total number of occurrences) of a given target element X.',
+    marathiQuestionStatement: 'प्रश्न: N संख्यांचा सॉर्ट केलेला अरे आणि शोधायची संख्या X स्वीकारून, त्या अरेमध्ये X ही संख्या किती वेळा आली आहे (Frequency) हे मोजणारा C प्रोग्राम लिहा.',
     subject: 'c_ds',
     set: 'SET A',
     description: 'Finds the number of occurrences of an element x in a sorted array of n integers.',
@@ -50,6 +52,8 @@ int main() {
     id: 'cds-seta-2',
     title: 'Store Square of Array Elements in Another Array',
     marathiTitle: 'अरे मधील घटकांचा वर्ग (Square) दुसऱ्या अरे मध्ये साठवणे',
+    questionStatement: 'Q. Write a C program to accept N integers into array A, calculate the square of each element, store the squared values into array B, and display both arrays.',
+    marathiQuestionStatement: 'प्रश्न: N संख्यांचा अरे A स्वीकारून, त्यातील प्रत्येक घटकाचा वर्ग (Square) करून तो दुसऱ्या अरे B मध्ये साठवणारा आणि दोन्ही अरे प्रिंट करणारा C प्रोग्राम लिहा.',
     subject: 'c_ds',
     set: 'SET A',
     description: 'Accepts an array of n integers, computes square of each element, stores it in array 2, and prints both.',
@@ -95,6 +99,8 @@ int main() {
     id: 'cds-seta-3',
     title: 'Copy One Array into Another Array',
     marathiTitle: 'एका अरे मधील डेटा दुसऱ्या अरे मध्ये कॉपी करणे',
+    questionStatement: 'Q. Write a C program to accept N integers in array A1 and copy all elements from array A1 into array A2 element by element using a loop.',
+    marathiQuestionStatement: 'प्रश्न: N घटकांचा अरे A1 स्वीकारून, लूपचा वापर करून A1 मधील सर्व घटक दुसऱ्या अरे A2 मध्ये कॉपी करणारा C प्रोग्राम लिहा.',
     subject: 'c_ds',
     set: 'SET A',
     description: 'Copies all elements from source array to destination array element by element.',
@@ -104,18 +110,22 @@ int main() {
 int main() {
     int n;
 
-    printf("Enter size of array: ");
+    printf("Enter number of elements: ");
     scanf("%d", &n);
 
     int source[n], destination[n];
 
-    printf("Enter %d elements for source array:\\n", n);
+    printf("Enter %d elements:\\n", n);
     for (int i = 0; i < n; i++) {
         scanf("%d", &source[i]);
-        destination[i] = source[i]; // Copying
     }
 
-    printf("\\nElements copied to destination array:\\n");
+    // Copying loop
+    for (int i = 0; i < n; i++) {
+        destination[i] = source[i];
+    }
+
+    printf("Copied Destination Array: ");
     for (int i = 0; i < n; i++) {
         printf("%d ", destination[i]);
     }
@@ -124,147 +134,104 @@ int main() {
     return 0;
 }`,
     explanation: {
-      en: 'Executes `destination[i] = source[i]` inside array traversal loop.',
-      mr: 'प्रत्येक इंडेक्सचा डेटा दुसऱ्या अरे मध्ये डायरेक्ट असाईनमेंटद्वारे कॉपी केला जातो.'
+      en: 'Assigns destination[i] = source[i] inside a single pass loop.',
+      mr: 'लूप मधे `destination[i] = source[i]` असा असाइनमेंट करून घटक कॉपी केले जातात.'
     },
     keyTakeaways: [
-      'Basic array cloning logic.'
+      'Basic array traversal and array memory copy.'
     ]
   },
   {
     id: 'cds-seta-4',
-    title: 'Bubble Sort (Ascending Order)',
-    marathiTitle: 'बबल सॉर्ट (Bubble Sort) - चढता क्रम',
+    title: 'Find Minimum and Maximum Element in Array',
+    marathiTitle: 'अरे मधील लहानात लहान (Min) आणि मोठ्यात मोठी (Max) संख्या शोधणे',
+    questionStatement: 'Q. Write a C program to accept N integers in an array and find the Maximum and Minimum numbers along with their index positions.',
+    marathiQuestionStatement: 'प्रश्न: N संख्यांचा अरे स्वीकारून त्यातील सर्वात लहान (Minimum) आणि सर्वात मोठी (Maximum) संख्या त्यांच्या इंडेक्स स्थानासह शोधणारा C प्रोग्राम लिहा.',
     subject: 'c_ds',
     set: 'SET A',
-    description: 'Sorts an integer array in ascending order by repeatedly swapping adjacent elements if out of order.',
-    filename: 'bubble_sort.c',
+    description: 'Finds the largest (Maximum) and smallest (Minimum) value in an unsorted array of n numbers.',
+    filename: 'min_max_array.c',
     code: `#include <stdio.h>
 
 int main() {
-    int n, temp;
-    printf("Enter number of elements: ");
+    int n;
+
+    printf("Enter size of array: ");
     scanf("%d", &n);
 
     int arr[n];
-    printf("Enter %d elements:\\n", n);
+    printf("Enter %d numbers:\\n", n);
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
 
-    // Bubble Sort
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
+    int min = arr[0];
+    int max = arr[0];
+
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+        if (arr[i] < min) {
+            min = arr[i];
         }
     }
 
-    printf("\\nSorted Array (Bubble Sort): ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\\n");
+    printf("Minimum Element = %d\\n", min);
+    printf("Maximum Element = %d\\n", max);
 
     return 0;
 }`,
     explanation: {
-      en: 'Nested loops compare adjacent elements `arr[j]` and `arr[j+1]` and swap them if `arr[j] > arr[j+1]`. Time complexity O(N^2).',
-      mr: 'शेजारील दोन घटकांची तुलना करून मोठी संख्या पुढे ढकलली जाते (Bubbled to top).'
+      en: 'Initializes min and max to arr[0] and updates them when encountering smaller or larger values.',
+      mr: 'प्रथमतः `min` आणि `max` ला पहिला घटक दिला जातो, नंतर लूप मध्ये तुलना करून नवीन लहानात लहान किंवा मोठ्यात मोठी संख्या सेव्ह केली जाते.'
     },
     keyTakeaways: [
-      'Adjacent swap condition: `arr[j] > arr[j+1]`',
-      'Passes required: n - 1'
+      'Linear scan array traversal in O(N) time.'
     ]
   },
   {
     id: 'cds-seta-5',
-    title: 'Insertion Sort (Ascending Order)',
-    marathiTitle: 'इन्सर्शन सॉर्ट (Insertion Sort) - चढता क्रम',
+    title: 'Bubble Sort Algorithm',
+    marathiTitle: 'बबल सॉर्ट (Bubble Sort) अल्गोरिदम द्वारे अरे सॉर्ट करणे',
+    questionStatement: 'Q. Write a C program to accept N unsorted integers and sort them in Ascending order using Bubble Sort algorithm.',
+    marathiQuestionStatement: 'प्रश्न: N संख्यांचा अनसॉर्टेड अरे स्वीकारून बबल सॉर्ट (Bubble Sort) अल्गोरिदमचा वापर करून ते घटक चढत्या क्रमाने (Ascending Order) सॉर्ट करणारा C प्रोग्राम लिहा.',
     subject: 'c_ds',
     set: 'SET A',
-    description: 'Builds sorted array one element at a time by inserting key into correct position in sorted sub-array.',
-    filename: 'insertion_sort.c',
+    description: 'Sorts an array of n integers in ascending order using Bubble Sort algorithm.',
+    filename: 'bubble_sort.c',
     code: `#include <stdio.h>
 
-int main() {
-    int n, key, j;
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-
-    int arr[n];
-    printf("Enter %d elements:\\n", n);
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    // Insertion Sort
-    for (int i = 1; i < n; i++) {
-        key = arr[i];
-        j = i - 1;
-
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j = j - 1;
-        }
-        arr[j + 1] = key;
-    }
-
-    printf("\\nSorted Array (Insertion Sort): ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\\n");
-
-    return 0;
-}`,
-    explanation: {
-      en: 'Picks `key = arr[i]` and shifts larger elements right until correct index `j+1` is found for key.',
-      mr: 'कार्ड्स सॉर्ट करण्यासारखे प्रत्येक घटक त्याच्या योग्य जागेवर सरकवला (Insert) जातो.'
-    },
-    keyTakeaways: [
-      'Efficient for small arrays or nearly sorted data.'
-    ]
-  },
-  {
-    id: 'cds-seta-6',
-    title: 'Selection Sort (Ascending Order)',
-    marathiTitle: 'सिलेक्शन सॉर्ट (Selection Sort) - चढता क्रम',
-    subject: 'c_ds',
-    set: 'SET A',
-    description: 'Repeatedly finds minimum element from unsorted portion and swaps it with first unsorted element.',
-    filename: 'selection_sort.c',
-    code: `#include <stdio.h>
-
-int main() {
-    int n, min_idx, temp;
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-
-    int arr[n];
-    printf("Enter %d elements:\\n", n);
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    // Selection Sort
+void bubbleSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
-        min_idx = i;
-        for (int j = i + 1; j < n; j++) {
-            if (arr[j] < arr[min_idx]) {
-                min_idx = j;
+        int swapped = 0;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap arr[j] and arr[j+1]
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = 1;
             }
         }
-        // Swap minimum element with element at i
-        temp = arr[min_idx];
-        arr[min_idx] = arr[i];
-        arr[i] = temp;
+        if (swapped == 0) break; // Optimization
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d integers:\\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
     }
 
-    printf("\\nSorted Array (Selection Sort): ");
+    bubbleSort(arr, n);
+
+    printf("Sorted Array (Bubble Sort): ");
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
@@ -273,569 +240,154 @@ int main() {
     return 0;
 }`,
     explanation: {
-      en: 'Finds index of minimum value in range `[i, n-1]` and swaps with position `i`. Exactly N-1 swaps.',
-      mr: 'उरलेल्या array मधील सर्वात लहान घटक शोधून (Select करून) त्याला सुरुवातीच्या जागी ठेवून swap केले जाते.'
+      en: 'Repeatedly swaps adjacent elements if they are in wrong order. Time Complexity O(N^2).',
+      mr: 'शेजारच्या दोन घटकांची तुलना करून लहान संख्या पुढे आणि मोठी मागे टाकली जाते.'
     },
     keyTakeaways: [
-      'Minimum element index tracking with `min_idx`.'
+      'Bubble sort pushes largest unsorted element to the end in each pass.',
+      'Optimized with `swapped` flag to stop early if array gets sorted.'
     ]
   },
 
   // --- SET B ---
   {
     id: 'cds-setb-1',
-    title: 'Polynomial Representation & Formatting',
-    marathiTitle: 'पॉलीनॉमियल (Polynomial) स्वीकारणे आणि फॉरमॅटमध्ये दाखवणे',
+    title: 'Linear Search Algorithm',
+    marathiTitle: 'लीनियर सर्च (Linear Search) द्वारे घटक शोधणे',
+    questionStatement: 'Q. Write a C program to accept N integers in an array and search for a key element X using Linear Search algorithm. Display index if found, or message if not found.',
+    marathiQuestionStatement: 'प्रश्न: N संख्यांचा अरे स्वीकारून लीनियर सर्च (Linear Search) अल्गोरिदमचा वापर करून X ही संख्या अरेमध्ये आहे की नाही ते शोधणारा आणि असल्यास तिचा इंडेक्स दाखवणारा C प्रोग्राम लिहा.',
     subject: 'c_ds',
     set: 'SET B',
-    description: 'Stores polynomial using struct Term { int coeff; int exp; } and formats output (e.g. 6x^4 + 2x^2 + 5x^1 + 3).',
-    filename: 'polynomial_display.c',
+    description: 'Searches for a key element X sequentially from index 0 to N-1 using Linear Search algorithm.',
+    filename: 'linear_search.c',
     code: `#include <stdio.h>
 
-struct Term {
-    int coeff;
-    int exp;
-};
+int linearSearch(int arr[], int n, int key) {
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == key) {
+            return i; // Return index where found
+        }
+    }
+    return -1; // Not found
+}
 
 int main() {
-    int n;
-    printf("Enter total number of terms in polynomial: ");
+    int n, key;
+
+    printf("Enter size of array: ");
     scanf("%d", &n);
 
-    struct Term p[n];
-
+    int arr[n];
+    printf("Enter %d integers:\\n", n);
     for (int i = 0; i < n; i++) {
-        printf("Enter coefficient and power (exponent) for term %d: ", i + 1);
-        scanf("%d %d", &p[i].coeff, &p[i].exp);
+        scanf("%d", &arr[i]);
     }
 
-    printf("\\nPolynomial: ");
-    for (int i = 0; i < n; i++) {
-        if (p[i].exp == 0) {
-            printf("%d", p[i].coeff);
-        } else {
-            printf("%dx^%d", p[i].coeff, p[i].exp);
-        }
+    printf("Enter key to search: ");
+    scanf("%d", &key);
 
-        if (i != n - 1) {
-            printf(" + ");
-        }
+    int result = linearSearch(arr, n, key);
+
+    if (result != -1) {
+        printf("Element %d Found at Index %d (Position %d)\\n", key, result, result + 1);
+    } else {
+        printf("Element %d NOT Found in Array.\\n", key);
     }
-    printf("\\n");
 
     return 0;
 }`,
     explanation: {
-      en: 'Uses structure array `p[i]` for (coeff, exp) pairs and formats clean polynomial output handling degree 0 constant term.',
-      mr: '`struct Term` वापरून सहगुणक (coeff) आणि घात (exp) साठवून `ax^b` या स्वरूपात प्रिंट केले जाते.'
+      en: 'Scans array index by index from 0 to n-1 until target key is found.',
+      mr: 'इंडेक्स ० पासून शेवटपर्यंत एकामागोमाग एक घटक तपासून शोध घेतला जातो.'
     },
     keyTakeaways: [
-      'Polynomial term structure: `{ int coeff; int exp; }`'
+      'Linear Search works on both sorted and unsorted arrays.',
+      'Worst case time complexity: O(N).'
     ]
   },
   {
     id: 'cds-setb-2',
-    title: 'Find and Replace Element in Array',
-    marathiTitle: 'अरे मधील संख्या शोधून त्याच्या जागी नवीन संख्या बदलणे (Replace)',
+    title: 'Binary Search Algorithm',
+    marathiTitle: 'बायनरी सर्च (Binary Search) अल्गोरिदम',
+    questionStatement: 'Q. Write a C program to perform Binary Search on a sorted array of N integers to search for a target element X in O(log N) time complexity.',
+    marathiQuestionStatement: 'प्रश्न: सॉर्ट केलेल्या अरेमध्ये बायनरी सर्च (Binary Search) अल्गोरिदमचा वापर करून X ही संख्या शोधणारा O(log N) प्रोग्राम लिहा.',
     subject: 'c_ds',
     set: 'SET B',
-    description: 'Searches for a specified value in an array and replaces all occurrences with a new replacement value.',
-    filename: 'find_replace_array.c',
+    description: 'Searches for key X in a sorted array by repeatedly dividing search interval in half (Divide and Conquer).',
+    filename: 'binary_search.c',
     code: `#include <stdio.h>
 
-int main() {
-    int n, searchVal, replaceVal, found = 0;
+int binarySearch(int arr[], int n, int key) {
+    int low = 0, high = n - 1;
 
-    printf("Enter number of elements (n): ");
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == key)
+            return mid;
+
+        if (arr[mid] < key)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+
+    return -1;
+}
+
+int main() {
+    int n, key;
+
+    printf("Enter size of sorted array: ");
     scanf("%d", &n);
 
     int arr[n];
-    printf("Enter %d elements:\\n", n);
+    printf("Enter %d sorted integers:\\n", n);
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
 
-    printf("Enter element to find: ");
-    scanf("%d", &searchVal);
-    printf("Enter replacement value: ");
-    scanf("%d", &replaceVal);
+    printf("Enter key to search: ");
+    scanf("%d", &key);
 
-    for (int i = 0; i < n; i++) {
-        if (arr[i] == searchVal) {
-            arr[i] = replaceVal;
-            found = 1;
-        }
-    }
+    int result = binarySearch(arr, n, key);
 
-    if (found) {
-        printf("\\nArray after replacement:\\n");
-        for (int i = 0; i < n; i++) {
-            printf("%d ", arr[i]);
-        }
-        printf("\\n");
+    if (result != -1) {
+        printf("Element %d Found at Index %d\\n", key, result);
     } else {
-        printf("\\nElement %d not found in array!\\n", searchVal);
+        printf("Element %d NOT Found in Array.\\n", key);
     }
 
     return 0;
 }`,
     explanation: {
-      en: 'Traverses array; if element equals searchVal, updates `arr[i] = replaceVal` and sets found flag.',
-      mr: 'शोधावयाचा अंक सापडल्यास त्याच्या जागी रिप्लेसमेंट व्हॅल्यू असाईन केली जाते.'
+      en: 'Compares target key with middle element, reducing search space by half at every step. Requires sorted array.',
+      mr: 'अरे मधील मधला घटक (mid) काढून शोध क्षेत्र अर्धे अर्धे केले जाते. अरे सॉर्ट असणे आवश्यक आहे.'
     },
     keyTakeaways: [
-      'Search and inline replace pattern.'
+      'Time complexity O(log N).',
+      'Prerequisite: Array MUST be sorted prior to binary search.'
     ]
   },
   {
     id: 'cds-setb-3',
-    title: 'Addition of Two Polynomials',
-    marathiTitle: 'दोन पॉलीनॉमीयलची बेरीज (Addition of Polynomials)',
+    title: 'Insertion Sort Algorithm',
+    marathiTitle: 'इन्सर्शन सॉर्ट (Insertion Sort) अल्गोरिदम',
+    questionStatement: 'Q. Write a C program to accept N unsorted integers and sort them using Insertion Sort algorithm (building sorted array one item at a time).',
+    marathiQuestionStatement: 'प्रश्न: इन्सर्शन सॉर्ट (Insertion Sort) अल्गोरिदमचा वापर करून N संख्यांचा अनसॉर्टेड अरे चढत्या क्रमाने सॉर्ट करणारा C प्रोग्राम लिहा.',
     subject: 'c_ds',
     set: 'SET B',
-    description: 'Adds two polynomials represented as sorted structure arrays term-by-term matching exponents.',
-    filename: 'polynomial_addition.c',
+    description: 'Sorts array using Insertion Sort algorithm by inserting current element into its correct position in sorted sub-array.',
+    filename: 'insertion_sort.c',
     code: `#include <stdio.h>
 
-struct Term {
-    int coeff;
-    int exp;
-};
-
-int main() {
-    int n1, n2, n3 = 0;
-    
-    printf("Enter number of terms in First polynomial: ");
-    scanf("%d", &n1);
-    struct Term p1[n1];
-    for (int i = 0; i < n1; i++) {
-        printf("Term %d (coeff exp): ", i + 1);
-        scanf("%d %d", &p1[i].coeff, &p1[i].exp);
-    }
-
-    printf("\\nEnter number of terms in Second polynomial: ");
-    scanf("%d", &n2);
-    struct Term p2[n2];
-    for (int i = 0; i < n2; i++) {
-        printf("Term %d (coeff exp): ", i + 1);
-        scanf("%d %d", &p2[i].coeff, &p2[i].exp);
-    }
-
-    struct Term res[n1 + n2];
-    int i = 0, j = 0;
-
-    // Adding polynomials
-    while (i < n1 && j < n2) {
-        if (p1[i].exp == p2[j].exp) {
-            res[n3].coeff = p1[i].coeff + p2[j].coeff;
-            res[n3].exp = p1[i].exp;
-            i++; j++; n3++;
-        } else if (p1[i].exp > p2[j].exp) {
-            res[n3++] = p1[i++];
-        } else {
-            res[n3++] = p2[j++];
-        }
-    }
-
-    while (i < n1) res[n3++] = p1[i++];
-    while (j < n2) res[n3++] = p2[j++];
-
-    printf("\\nResultant Polynomial (Sum): ");
-    for (int k = 0; k < n3; k++) {
-        printf("%dx^%d", res[k].coeff, res[k].exp);
-        if (k != n3 - 1) printf(" + ");
-    }
-    printf("\\n");
-
-    return 0;
-}`,
-    explanation: {
-      en: 'Uses two-pointer merge algorithm: when exponents match, coefficients add up; otherwise higher exponent term copied first.',
-      mr: 'समान घात (exp) असणाऱ्या टर्म्सचे सहगुणक (coeff) जोडले जातात.'
-    },
-    keyTakeaways: [
-      'Two-pointer linear sweep algorithm.'
-    ]
-  },
-  {
-    id: 'cds-setb-4',
-    title: 'Sort Days of Week using Insertion Sort',
-    marathiTitle: 'आठवड्याचे दिवस इन्सर्शन सॉर्टद्वारे (Alphabetical) क्रमवारी लावणे',
-    subject: 'c_ds',
-    set: 'SET B',
-    description: 'Sorts array of string days (Sunday to Saturday) alphabetically using `strcmp()` and `strcpy()` in insertion sort.',
-    filename: 'sort_days_insertion.c',
-    code: `#include <stdio.h>
-#include <string.h>
-
-int main() {
-    char days[7][20] = {
-        "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-    };
-    int n = 7;
-    char key[20];
-    int j;
-
-    // Insertion sort on strings
+void insertionSort(int arr[], int n) {
     for (int i = 1; i < n; i++) {
-        strcpy(key, days[i]);
-        j = i - 1;
+        int key = arr[i];
+        int j = i - 1;
 
-        while (j >= 0 && strcmp(days[j], key) > 0) {
-            strcpy(days[j + 1], days[j]);
-            j = j - 1;
-        }
-        strcpy(days[j + 1], key);
-    }
-
-    printf("Sorted Days of the Week (Alphabetical Order):\\n");
-    for (int i = 0; i < n; i++) {
-        printf("%s\\n", days[i]);
-    }
-
-    return 0;
-}`,
-    explanation: {
-      en: 'Uses `strcmp()` for lexicographical string comparison and `strcpy()` for string moves.',
-      mr: 'स्ट्रिंगची अकारविल्हे (Alphabetical) रचना करण्यासाठी `strcmp()` आणि `strcpy()` वापरले जाते.'
-    },
-    keyTakeaways: [
-      'String compare: `strcmp(a, b) > 0` when `a` is alphabetically after `b`.'
-    ]
-  },
-  {
-    id: 'cds-setb-5',
-    title: 'Sort Names Alphabetically using Bubble Sort',
-    marathiTitle: 'नावे बबल सॉर्टद्वारे (Bubble Sort) अकारविल्हे लावणे',
-    subject: 'c_ds',
-    set: 'SET B',
-    description: 'Accepts n names from user and sorts them alphabetically using string bubble sort algorithm.',
-    filename: 'sort_names_bubble.c',
-    code: `#include <stdio.h>
-#include <string.h>
-
-int main() {
-    int n;
-    printf("Enter number of names: ");
-    scanf("%d", &n);
-
-    char names[n][50], temp[50];
-    printf("Enter %d names:\\n", n);
-    for (int i = 0; i < n; i++) {
-        scanf("%s", names[i]);
-    }
-
-    // Bubble sort on strings
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (strcmp(names[j], names[j + 1]) > 0) {
-                strcpy(temp, names[j]);
-                strcpy(names[j], names[j + 1]);
-                strcpy(names[j + 1], temp);
-            }
-        }
-    }
-
-    printf("\\nNames in Alphabetical Order:\\n");
-    for (int i = 0; i < n; i++) {
-        printf("%s\\n", names[i]);
-    }
-
-    return 0;
-}`,
-    explanation: {
-      en: '2D char array `names[n][50]` sorted via pairwise string comparison `strcmp(names[j], names[j+1]) > 0`.',
-      mr: 'नावांची अकारविल्हे (A to Z) क्रमवारी लावण्यासाठी बबल सॉर्टचा वापर केला आहे.'
-    },
-    keyTakeaways: [
-      '2D character matrix string array.'
-    ]
-  },
-  {
-    id: 'cds-setb-6',
-    title: 'Bubble Sort with Total Swaps Count',
-    marathiTitle: 'एकूण स्वॅप्स संख्या (Swap Count) मोजून बबल सॉर्ट करणे',
-    subject: 'c_ds',
-    set: 'SET B',
-    description: 'Sorts array with Bubble Sort and tracks total number of element swap operations executed.',
-    filename: 'bubble_sort_swaps.c',
-    code: `#include <stdio.h>
-
-int main() {
-    int n, temp, swap_count = 0;
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-
-    int arr[n];
-    printf("Enter %d elements:\\n", n);
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    // Bubble Sort with Swap Counter
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-                swap_count++;
-            }
-        }
-    }
-
-    printf("\\nSorted List: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-
-    printf("\\nTotal Number of Swaps: %d\\n", swap_count);
-
-    return 0;
-}`,
-    explanation: {
-      en: 'Increments `swap_count++` every time adjacent elements swap, providing sorting complexity metric.',
-      mr: 'अदलाबदल (Swap) किती वेळा झाली हे मोजण्यासाठी `swap_count++` मोजले जाते.'
-    },
-    keyTakeaways: [
-      'Tracks total structural swaps.'
-    ]
-  },
-
-  // --- SET C ---
-  {
-    id: 'cds-setc-1',
-    title: 'Multiplication of Two Polynomials',
-    marathiTitle: 'दोन पॉलीनॉमीयलचा गुणाकार (Multiplication of Polynomials)',
-    subject: 'c_ds',
-    set: 'SET C',
-    description: 'Multiplies every term of polynomial 1 with polynomial 2 (coeff1*coeff2, exp1+exp2) and combines like exponential terms.',
-    filename: 'polynomial_multiplication.c',
-    code: `#include <stdio.h>
-
-struct Term {
-    int coeff;
-    int exp;
-};
-
-int main() {
-    int n1, n2;
-
-    printf("Enter number of terms in First polynomial: ");
-    scanf("%d", &n1);
-    struct Term p1[n1];
-    for (int i = 0; i < n1; i++) {
-        printf("Term %d (coeff exp): ", i + 1);
-        scanf("%d %d", &p1[i].coeff, &p1[i].exp);
-    }
-
-    printf("\\nEnter number of terms in Second polynomial: ");
-    scanf("%d", &n2);
-    struct Term p2[n2];
-    for (int i = 0; i < n2; i++) {
-        printf("Term %d (coeff exp): ", i + 1);
-        scanf("%d %d", &p2[i].coeff, &p2[i].exp);
-    }
-
-    int total_terms = n1 * n2;
-    struct Term prod[total_terms];
-    int k = 0;
-
-    // Multiply every term with every other term
-    for (int i = 0; i < n1; i++) {
-        for (int j = 0; j < n2; j++) {
-            prod[k].coeff = p1[i].coeff * p2[j].coeff;
-            prod[k].exp = p1[i].exp + p2[j].exp;
-            k++;
-        }
-    }
-
-    // Combine like terms (same powers)
-    for (int i = 0; i < k; i++) {
-        for (int j = i + 1; j < k; j++) {
-            if (prod[i].exp == prod[j].exp) {
-                prod[i].coeff += prod[j].coeff;
-                // remove duplicate term by shifting array left
-                for (int m = j; m < k - 1; m++) {
-                    prod[m] = prod[m + 1];
-                }
-                k--;
-                j--;
-            }
-        }
-    }
-
-    printf("\\nResultant Polynomial (Product): ");
-    for (int i = 0; i < k; i++) {
-        printf("%dx^%d", prod[i].coeff, prod[i].exp);
-        if (i != k - 1) printf(" + ");
-    }
-    printf("\\n");
-
-    return 0;
-}`,
-    explanation: {
-      en: 'Multiplies coefficients, adds exponents (`exp1 + exp2`), and simplifies duplicate exponent terms in resulting array.',
-      mr: 'गुणताना सहगुणकांचा गुणाकार होतो आणि घातांकांची (exp) बेरीज केली जाते.'
-    },
-    keyTakeaways: [
-      'Multiplication rules: coeff = c1 * c2, exp = e1 + e2.',
-      'Includes combination pass for terms with duplicate powers.'
-    ]
-  },
-  {
-    id: 'cds-setc-2',
-    title: 'Sort employee.txt File Records by Name using Bubble Sort',
-    marathiTitle: 'employee.txt फाईल मधील कर्मचारी नावे बबल सॉर्टने सॉर्ट करणे',
-    subject: 'c_ds',
-    set: 'SET C',
-    description: 'Reads employee records (empno, empname) from "employee.txt" using `fopen` & `fscanf`, sorts by name using Bubble Sort, and displays sorted list.',
-    filename: 'sort_employee_file.c',
-    code: `#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-struct Employee {
-    int empno;
-    char empname[50];
-};
-
-int main() {
-    FILE *fp;
-    struct Employee emp[100], temp;
-    int n = 0;
-
-    fp = fopen("employee.txt", "r");
-    if (fp == NULL) {
-        printf("Error: Could not open 'employee.txt'!\\n");
-        printf("(Tip: Create 'employee.txt' with lines like: 101 John)\\n");
-        return 1;
-    }
-
-    // Reading data from file
-    while (fscanf(fp, "%d %s", &emp[n].empno, emp[n].empname) != EOF) {
-        n++;
-    }
-    fclose(fp);
-
-    // Bubble sort by empname
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (strcmp(emp[j].empname, emp[j + 1].empname) > 0) {
-                temp = emp[j];
-                emp[j] = emp[j + 1];
-                emp[j + 1] = temp;
-            }
-        }
-    }
-
-    printf("--- Sorted Employee List (Alphabetical by Name) ---\\n");
-    printf("Emp No\\tEmp Name\\n");
-    for (int i = 0; i < n; i++) {
-        printf("%d\\t%s\\n", emp[i].empno, emp[i].empname);
-    }
-
-    return 0;
-}`,
-    explanation: {
-      en: 'Demonstrates C File I/O (`fopen`, `fscanf`, `fclose`) with structure array Bubble Sorting.',
-      mr: '`fopen()` द्वारे फाईल वाचून कर्मचाऱ्यांची नावे अकारविल्हे सॉर्ट केली जातात.'
-    },
-    keyTakeaways: [
-      'File read loop: `while (fscanf(fp, "%d %s", ...) != EOF)`.'
-    ]
-  },
-  {
-    id: 'cds-setc-3',
-    title: 'Sort person.txt File Records by Age using Insertion Sort',
-    marathiTitle: 'person.txt फाईल मधील व्यक्तींचे वय (Age) इन्सर्शन सॉर्टने सॉर्ट करणे',
-    subject: 'c_ds',
-    set: 'SET C',
-    description: 'Reads person records (personno, personage) from file and sorts them by age in ascending order using Insertion Sort.',
-    filename: 'sort_person_age_file.c',
-    code: `#include <stdio.h>
-#include <stdlib.h>
-
-struct Person {
-    int personno;
-    int personage;
-};
-
-int main() {
-    FILE *fp;
-    struct Person p[100], key;
-    int n = 0, j;
-
-    fp = fopen("person.txt", "r");
-    if (fp == NULL) {
-        printf("Error: Could not open 'person.txt'!\\n");
-        printf("(Tip: Create 'person.txt' with lines like: 1 25)\\n");
-        return 1;
-    }
-
-    // Reading data from file
-    while (fscanf(fp, "%d %d", &p[n].personno, &p[n].personage) != EOF) {
-        n++;
-    }
-    fclose(fp);
-
-    // Insertion Sort by Age
-    for (int i = 1; i < n; i++) {
-        key = p[i];
-        j = i - 1;
-
-        while (j >= 0 && p[j].personage > key.personage) {
-            p[j + 1] = p[j];
-            j = j - 1;
-        }
-        p[j + 1] = key;
-    }
-
-    printf("--- Sorted Person List (Ascending by Age) ---\\n");
-    printf("Person No\\tAge\\n");
-    for (int i = 0; i < n; i++) {
-        printf("%d\\t\\t%d\\n", p[i].personno, p[i].personage);
-    }
-
-    return 0;
-}`,
-    explanation: {
-      en: 'Structure insertion sort comparing struct member `p[j].personage > key.personage`.',
-      mr: 'फाइल मधील वयाची तुलना करून सर्वात लहान वय आधी येईल अशा प्रकारे सॉर्ट केले जाते.'
-    },
-    keyTakeaways: [
-      'Sorting struct records based on numeric field.'
-    ]
-  },
-  {
-    id: 'cds-setc-4',
-    title: 'Sorting Integers in Descending Order (Bubble, Insertion, Selection)',
-    marathiTitle: 'पूर्णांक संख्यांचा उतरता क्रम (Descending Order) - तिन्ही पद्धती',
-    subject: 'c_ds',
-    set: 'SET C',
-    description: 'Demonstrates Descending Order sorting for all three algorithms (Bubble Sort, Insertion Sort, Selection Sort) in a single modular program.',
-    filename: 'descending_sort_all.c',
-    code: `#include <stdio.h>
-
-void bubbleSortDesc(int arr[], int n) {
-    int temp;
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] < arr[j + 1]) { // '<' for Descending
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
-}
-
-void insertionSortDesc(int arr[], int n) {
-    int key, j;
-    for (int i = 1; i < n; i++) {
-        key = arr[i];
-        j = i - 1;
-        while (j >= 0 && arr[j] < key) { // '<' for Descending
+        // Shift elements greater than key to one position ahead
+        while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
             j = j - 1;
         }
@@ -843,51 +395,234 @@ void insertionSortDesc(int arr[], int n) {
     }
 }
 
-void selectionSortDesc(int arr[], int n) {
-    int max_idx, temp;
-    for (int i = 0; i < n - 1; i++) {
-        max_idx = i;
-        for (int j = i + 1; j < n; j++) {
-            if (arr[j] > arr[max_idx]) { // '>' for Descending
-                max_idx = j;
-            }
-        }
-        temp = arr[max_idx];
-        arr[max_idx] = arr[i];
-        arr[i] = temp;
-    }
-}
-
 int main() {
-    int n = 5;
-    int a1[] = {12, 45, 23, 5, 89};
-    int a2[] = {12, 45, 23, 5, 89};
-    int a3[] = {12, 45, 23, 5, 89};
+    int n;
 
-    bubbleSortDesc(a1, n);
-    insertionSortDesc(a2, n);
-    selectionSortDesc(a3, n);
+    printf("Enter size of array: ");
+    scanf("%d", &n);
 
-    printf("Bubble Sort Descending:    ");
-    for (int i = 0; i < n; i++) printf("%d ", a1[i]);
+    int arr[n];
+    printf("Enter %d integers:\\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
 
-    printf("\\nInsertion Sort Descending: ");
-    for (int i = 0; i < n; i++) printf("%d ", a2[i]);
+    insertionSort(arr, n);
 
-    printf("\\nSelection Sort Descending: ");
-    for (int i = 0; i < n; i++) printf("%d ", a3[i]);
+    printf("Sorted Array (Insertion Sort): ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
     printf("\\n");
 
     return 0;
 }`,
     explanation: {
-      en: 'Flips comparison operators (`<` instead of `>` in Bubble/Insertion, and find `max_idx` instead of `min_idx` in Selection) to achieve descending order.',
-      mr: 'उतरत्या क्रमासाठी (Descending) तुलना चिन्ह बदलून मोठे मूल्य आधी ठेवले जाते.'
+      en: 'Picks element key = arr[i] and shifts larger sorted elements to right until correct insertion slot is found.',
+      mr: 'पत्त्यांच्या खेळाप्रमाणे नवीन संख्या तिच्या योग्य जागेवर (Sorted Subarray) टाकली जाते.'
     },
     keyTakeaways: [
-      'Descending Bubble: `if (arr[j] < arr[j+1])`',
-      'Descending Insertion: `while (j >= 0 && arr[j] < key)`',
-      'Descending Selection: `if (arr[j] > arr[max_idx])`'
+      'Efficient for small dataset and nearly sorted arrays.',
+      'In-place, stable sorting algorithm.'
+    ]
+  },
+  {
+    id: 'cds-setb-4',
+    title: 'Selection Sort Algorithm',
+    marathiTitle: 'सिलेक्शन सॉर्ट (Selection Sort) अल्गोरिदम',
+    questionStatement: 'Q. Write a C program to accept N unsorted integers and sort them using Selection Sort algorithm by finding minimum element in unsorted region and swapping.',
+    marathiQuestionStatement: 'प्रश्न: सिलेक्शन सॉर्ट (Selection Sort) अल्गोरिदमचा वापर करून अनसॉर्टेड भाग मधील लहानात लहान घटक शोधून त्याला सुरुवातीला स्वॅप करून अरे सॉर्ट करणारा C प्रोग्राम लिहा.',
+    subject: 'c_ds',
+    set: 'SET B',
+    description: 'Sorts array by repeatedly finding minimum element from unsorted part and putting it at beginning.',
+    filename: 'selection_sort.c',
+    code: `#include <stdio.h>
+
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int min_idx = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[min_idx]) {
+                min_idx = j;
+            }
+        }
+        // Swap smallest found element with arr[i]
+        int temp = arr[min_idx];
+        arr[min_idx] = arr[i];
+        arr[i] = temp;
+    }
+}
+
+int main() {
+    int n;
+
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d integers:\\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    selectionSort(arr, n);
+
+    printf("Sorted Array (Selection Sort): ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\\n");
+
+    return 0;
+}`,
+    explanation: {
+      en: 'Finds minimum element in unsorted subarray [i..n-1] and swaps it into index i.',
+      mr: 'उरलेल्या अनसॉर्टेड भागात सर्वात लहान घटक निवडून त्याला योग्य जागेवर स्वॅप केले जाते.'
+    },
+    keyTakeaways: [
+      'Selection Sort makes maximum N-1 swaps.',
+      'Time complexity O(N^2) in all cases.'
+    ]
+  },
+
+  // --- SET C ---
+  {
+    id: 'cds-setc-1',
+    title: 'Merge Sort Algorithm',
+    marathiTitle: 'मर्ज सॉर्ट (Merge Sort) - डिवाइड अँड कॉन्कर अल्गोरिदम',
+    questionStatement: 'Q. Write a C program to implement Merge Sort algorithm using Divide and Conquer recursive technique to sort N numbers in O(N log N) time complexity.',
+    marathiQuestionStatement: 'प्रश्न: डिवाइड अँड कॉन्कर (Divide and Conquer) पद्धतीचा वापर करून N संख्यांचा अरे O(N log N) वेळेत सॉर्ट करणारा मर्ज सॉर्ट (Merge Sort) C प्रोग्राम लिहा.',
+    subject: 'c_ds',
+    set: 'SET C',
+    description: 'Sorts an array of n elements using recursive Divide and Conquer Merge Sort algorithm in O(N log N) time complexity.',
+    filename: 'merge_sort.c',
+    code: `#include <stdio.h>
+
+void merge(int arr[], int l, int m, int r) {
+    int n1 = m - l + 1;
+    int n2 = r - m;
+
+    int L[n1], R[n2];
+
+    for (int i = 0; i < n1; i++) L[i] = arr[l + i];
+    for (int j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
+
+    int i = 0, j = 0, k = l;
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+}
+
+void mergeSort(int arr[], int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d integers:\\n", n);
+    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+
+    mergeSort(arr, 0, n - 1);
+
+    printf("Sorted Array (Merge Sort): ");
+    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
+    printf("\\n");
+
+    return 0;
+}`,
+    explanation: {
+      en: 'Recursively divides array into two halves, sorts them, and merges sorted subarrays.',
+      mr: 'अरे दोन भागांत तोडून (Divide) नंतर एकत्र सॉर्ट (Merge) केला जातो.'
+    },
+    keyTakeaways: [
+      'Guaranteed O(N log N) performance.',
+      'Stable sorting algorithm requiring O(N) extra space.'
+    ]
+  },
+  {
+    id: 'cds-setc-2',
+    title: 'Quick Sort Algorithm',
+    marathiTitle: 'क्विक सॉर्ट (Quick Sort) - पिव्हॉट सॉर्टिंग अल्गोरिदम',
+    questionStatement: 'Q. Write a C program to implement Quick Sort algorithm using Pivot partitioning technique (Lomuto or Hoare) to sort N unsorted integers.',
+    marathiQuestionStatement: 'प्रश्न: पिव्हॉट (Pivot Element) निवडून विभाजनाच्या (Partitioning) साहाय्याने अनसॉर्टेड अरे चढत्या क्रमाने सॉर्ट करणारा क्विक सॉर्ट (Quick Sort) C प्रोग्राम लिहा.',
+    subject: 'c_ds',
+    set: 'SET C',
+    description: 'Sorts array using Quick Sort algorithm by selecting a Pivot element, partitioning elements around pivot, and recursively sorting sub-arrays.',
+    filename: 'quick_sort.c',
+    code: `#include <stdio.h>
+
+void swap(int* a, int* b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high]; // Pivot element
+    int i = (low - 1);
+
+    for (int j = low; j < high; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d integers:\\n", n);
+    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+
+    quickSort(arr, 0, n - 1);
+
+    printf("Sorted Array (Quick Sort): ");
+    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
+    printf("\\n");
+
+    return 0;
+}`,
+    explanation: {
+      en: 'Picks last element as pivot, partitions smaller elements to left and larger to right, then recurses.',
+      mr: 'पिव्हॉट (Pivot) घटक निवडून त्यापेक्षा लहान डावीकडे आणि मोठे उजवीकडे टाकून रिकर्शन चालवले जाते.'
+    },
+    keyTakeaways: [
+      'Average time complexity O(N log N).',
+      'In-place sorting algorithm with high cache efficiency.'
     ]
   }
 ];

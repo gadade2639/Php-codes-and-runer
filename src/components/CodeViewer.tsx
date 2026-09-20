@@ -4,10 +4,9 @@ import { Problem } from '../types';
 
 interface CodeViewerProps {
   problem: Problem;
-  showMarathi: boolean;
 }
 
-export const CodeViewer: React.FC<CodeViewerProps> = ({ problem, showMarathi }) => {
+export const CodeViewer: React.FC<CodeViewerProps> = ({ problem }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -96,20 +95,11 @@ export const CodeViewer: React.FC<CodeViewerProps> = ({ problem, showMarathi }) 
           <Info className="w-4 h-4 text-indigo-400 mt-0.5 shrink-0" />
           <div className="text-xs text-slate-300 leading-relaxed">
             <span className="font-semibold text-indigo-300 block mb-0.5">
-              {showMarathi ? 'स्पष्टीकरण (Explanation):' : 'Explanation:'}
+              Explanation:
             </span>
-            {showMarathi ? problem.explanation.mr : problem.explanation.en}
+            {problem.explanation.en}
           </div>
         </div>
-
-        {problem.marathiNote && showMarathi && (
-          <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-3 flex items-start gap-2">
-            <Sparkles className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-            <p className="text-xs text-amber-200/90 leading-normal">
-              <strong>महत्त्वाची टीप:</strong> {problem.marathiNote}
-            </p>
-          </div>
-        )}
 
         {problem.keyTakeaways && problem.keyTakeaways.length > 0 && (
           <div className="pt-2 border-t border-slate-800/60">
